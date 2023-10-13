@@ -20,6 +20,7 @@
     /*font families*/
     --font-oswald: 'Oswald', sans-serif;
     --font-poppins: 'Poppins', sans-serif;
+    --font-alfa: 'Alfa Slab One', serif;
 }
 /*-----------------*/
 /*CSS reset*/
@@ -41,12 +42,23 @@ picture,
 figure{
     margin: 0;
 }
+
+ul {
+    list-style: none;
+    text-decoration: none;
+    font-size: var(--fs-700);
+}
+
 /*Setup the body*/
 body{
     line-height: 1.6;
     min-height: 100vh;
     font-family: var(--font-poppins);
     font-size: var(--fs-400);
+}
+
+header {
+    width: 100%;
 }
 /*Make images easier to work with*/
 img,
@@ -270,7 +282,38 @@ select{
     z-index: 100;
     font-weight: 700;
     font-size: 2em;
-  }
+}
+
+/*Navbar*/
+
+.bar {
+    background-color: hsl(var(--clr-black));
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+   
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/*Logo Styling*/
+.logo {
+    font-family: var(--font-alfa);
+    font-size: var(--fs-600);
+}
+
 
 /*font*/
 .font-default{
