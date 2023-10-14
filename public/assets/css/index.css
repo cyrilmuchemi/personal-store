@@ -48,6 +48,7 @@
 
     .low-header{
         margin-inline: 1rem;
+        font-size: var(--fs-500);
     }
 }
 
@@ -79,6 +80,7 @@
 
     .low-header{
         margin-inline: 4.5rem;
+        font-size: var(--fs-500);
     }
 }
 
@@ -119,6 +121,10 @@ body{
 
 header {
     width: 100%;
+    background-image: url("../vectors/white-paper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 /*Make images easier to work with*/
 img,
@@ -158,12 +164,20 @@ select{
     border: 0;
 }
 
+.nav-menu{
+    border-bottom: hsl(var(--clr-white)/0.08);
+}
+
 .text-hover:hover{
     color: hsl(var(--clr-green)) !important;
 }
 
 .pointer {
     cursor: pointer;
+}
+
+.gap{
+    gap: 10px;
 }
 
 .uppercase {
@@ -379,6 +393,9 @@ select{
 .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+
+/*custom component */
+
 
 
 /*font*/

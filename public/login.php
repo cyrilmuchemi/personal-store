@@ -14,8 +14,8 @@
 </head>
 <body class="font-default">
     <header>
-        <div class="top-header my-3 mx-5">
-            <div class="socials pointer">
+        <div class="top-header mx-5">
+            <div class="socials my-3 pointer">
             <article class="px-4 text-hover">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
@@ -33,7 +33,7 @@
             </svg>
             </article>
             </div>
-            <div class="head-actions pointer">
+            <div class="head-actions my-3 pointer">
                 <article class="px-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
@@ -61,16 +61,16 @@
             </div>
         </div>
         <nav>
-            <div class="d-flex my-4 justify-content-between nav-menu">
-                <div class="hamburger">
+            <div class="d-flex justify-content-between nav-menu">
+                <div class="hamburger my-4">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
-                    <a href="#" class="text-decoration-none">
-                    <h1 class="logo text-center"><span class="text-black">Accounts</span><span class="text-green">Zone.</span></h1>
+                    <a href="#" class="text-decoration-none text-center">
+                    <h1 class="logo my-4"><span class="text-black">Accounts</span><span class="text-green">Zone.</span></h1>
                     </a>
-                <div>
+                <div class="my-4">
                     <ul>
                         <li class="px-3">
                             <a class="text-black text-decoration-none text-hover" href="#">Home</a>
@@ -89,24 +89,33 @@
                         </li>
                     </ul>
                 </div>
-                <div pointer">
+                <div class="my-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
                     <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
                 </svg>
                 </div>
             </div>
         </nav>
-        <div class="low-header d-flex align-items-center">
+        <div class="low-header gap d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
             <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
         </svg>
         <span>Home</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
         </svg>
-        <span>Login</span>  
+        <span class="text-hover pointer">Login</span>  
         </div>
     </header>
+    <main>
+        <div class="container">
+            <div class="signup-box">
+                <div>
+                    
+                </div>
+            <div>
+        </div>
+    </main>
     <script src="assets/js/index.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
