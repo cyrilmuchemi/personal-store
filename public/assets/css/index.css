@@ -24,7 +24,7 @@
 }
 /*-----------------*/
 /*Media Queries*/
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .top-header, .socials, .head-actions {
         display: none;
     }
@@ -51,7 +51,7 @@
     }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 900px) {
     .top-header, .socials, .head-actions {
         display: flex;
     }
@@ -70,7 +70,7 @@
     }
 
     .nav-menu{
-        margin-inline: 5.5rem;
+        margin-inline: 4.5rem;
     }
 
     ul{
@@ -78,7 +78,7 @@
     }
 
     .low-header{
-        margin-inline: 5.5rem;
+        margin-inline: 4.5rem;
     }
 }
 
