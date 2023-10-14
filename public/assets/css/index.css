@@ -23,6 +23,65 @@
     --font-alfa: 'Alfa Slab One', serif;
 }
 /*-----------------*/
+/*Media Queries*/
+@media (max-width: 600px) {
+    .top-header, .socials, .head-actions {
+        display: none;
+    }
+
+    .logo {
+        font-family: var(--font-alfa);
+        font-size: var(--fs-600);
+    }
+
+    ul{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .nav-menu{
+        margin-inline: 1rem;
+    }
+
+    .low-header{
+        margin-inline: 1rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .top-header, .socials, .head-actions {
+        display: flex;
+    }
+
+    .top-header{
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-family: var(--font-alfa);
+        font-size: var(--fs-700);
+    }
+
+    .hamburger{
+        display: none;
+    }
+
+    .nav-menu{
+        margin-inline: 5.5rem;
+    }
+
+    ul{
+        display: flex;
+    }
+
+    .low-header{
+        margin-inline: 5.5rem;
+    }
+}
+
 /*CSS reset*/
 /*Box Sizing*/
 *,
@@ -46,8 +105,9 @@ figure{
 ul {
     list-style: none;
     text-decoration: none;
-    font-size: var(--fs-700);
+    font-size: var(--fs-500);
 }
+
 
 /*Setup the body*/
 body{
@@ -98,8 +158,20 @@ select{
     border: 0;
 }
 
+.text-hover:hover{
+    color: hsl(var(--clr-green)) !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 .uppercase {
     text-transform: uppercase;
+}
+
+.margin-inline{
+    margin-inline: 7.5rem;
 }
 /*-----------------*/
 
@@ -306,12 +378,6 @@ select{
 
 .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
-}
-
-/*Logo Styling*/
-.logo {
-    font-family: var(--font-alfa);
-    font-size: var(--fs-600);
 }
 
 
