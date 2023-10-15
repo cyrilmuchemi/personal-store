@@ -83,9 +83,6 @@
                         <li class="px-3">
                             <a class="text-black text-decoration-none text-hover" href="#">About</a>
                         </li>
-                        <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="#">Contact</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="my-4 pointer">
@@ -106,29 +103,26 @@
         <span class="text-hover pointer">Login</span>  
         </div>
     </header>
-            <!--slider -->
+    <!--slider -->
         <link rel="stylesheet" href="assets/slider/ism/css/my-slider.css"/>
         <script src="assets/slider/ism/js/ism-2.2.min.js"></script>
         <div class="ism-slider" data-transition_type="fade" data-play_type="loop" id="my-slider">
         <ol>
             <li>
-            <img src="assets/slider/ism/image/slides/flower-729514_1280.jpg">
-            <div class="ism-caption ism-caption-0">My slide caption text</div>
+            <img src="assets/slider/ism/image/slides/dstv.png">
             </li>
             <li>
-            <img src="assets/slider/ism/image/slides/beautiful-701678_1280.jpg">
-            <div class="ism-caption ism-caption-0">My slide caption text</div>
+            <img src="assets/slider/ism/image/slides/verbit.png">
             </li>
             <li>
-            <img src="assets/slider/ism/image/slides/summer-192179_1280.jpg">
-            <div class="ism-caption ism-caption-0">My slide caption text</div>
+            <img src="assets/slider/ism/image/slides/writerbay.png">
             </li>
             <li>
-            <img src="assets/slider/ism/image/slides/city-690332_1280.jpg">
-            <div class="ism-caption ism-caption-0">My slide caption text</div>
+            <img src="assets/slider/ism/image/slides/netflix.png">
             </li>
         </ol>
         </div>
+    <!--end slider -->
     <main>
         <div class="container">
             

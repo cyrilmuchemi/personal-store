@@ -84,9 +84,6 @@
                         <li class="px-3">
                             <a class="text-black text-decoration-none text-hover" href="#">About</a>
                         </li>
-                        <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="#">Contact</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="my-4">
