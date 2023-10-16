@@ -180,6 +180,18 @@ select{
     gap: 10px;
 }
 
+.body-wrapper{
+    background-image: url("../vectors/white-paper.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.hero {
+    width: 100%;
+}
+
 .uppercase {
     text-transform: uppercase;
 }
@@ -457,6 +469,38 @@ select{
     clip-path: circle(40px at 90% 8%);
 }
 
+/*product card*/
+.price-box{
+    height: 40px;
+    display: flex;
+    gap: 5px;
+    padding-inline: 0.5rem;
+    background-color: hsl(var(--clr-white));
+    border-radius: 4px;
+    align-items: center;
+    border: 1px solid rgb(167, 159, 159);
+}
+
+.product-card{
+    border: 1px solid rgb(167, 159, 159);
+    width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.product-buttons{
+    margin-inline: 1rem;
+}
+
+.product-gap{
+    gap: 30px;
+}
+
+.top-button{
+    top: 0;
+    right: 0;
+    padding-inline: 15px;
+}
 /*font*/
 .font-default{
     font-family: var(--font-poppins);
@@ -466,6 +510,10 @@ select{
 
 .font-oswold{
     font-family: var(--font-oswald);
+}
+
+.fs-700{
+    font-size: var(--fs-700);
 }
 
 
