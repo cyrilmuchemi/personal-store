@@ -406,6 +406,20 @@ select{
     transform: translateY(-8px) rotate(-45deg);
 }
 
+.navigation{
+    width: 100%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: hsl(var(--clr-white));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 /*custom component */
 /*search bar */
 

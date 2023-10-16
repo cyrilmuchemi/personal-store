@@ -12,7 +12,7 @@
     <title>Accounts Zone - Home</title>
 </head>
 <body class="font-default">
-    <header>
+    <header class="main-header">
         <div class="top-header mx-5">
             <div class="socials my-3 pointer">
             <article class="px-4 text-hover">
@@ -59,7 +59,7 @@
                 </article>
             </div>
         </div>
-        <nav>
+        <nav class="navigation"  id="sticky-navigation">
             <div class="d-flex justify-content-between nav-menu">
                 <div class="hamburger my-4">
                     <span class="bar"></span>
