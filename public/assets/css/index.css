@@ -327,60 +327,85 @@ select{
 
 /*progress circle */
 .circle-wrap {
-    width: 150px;
-    height: 150px;
+    width: 60px; /* Reduced the size of the circle */
+    height: 60px; /* Reduced the size of the circle */
     background: hsl(var(--clr-white));
     border-radius: 50%;
     border: 1px solid hsl(var(--clr-green));
 }
-
+  
 .circle-wrap .circle .mask,
 .circle-wrap .circle .fill {
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  border-radius: 50%;
+    width: 60px; /* Reduced the size of the circle */
+    height: 60px; /* Reduced the size of the circle */
+    position: absolute;
+    border-radius: 50%;
 }
-
-.mask .fill {
-  clip: rect(0px, 75px, 150px, 0px);
-  background-color: hsl(var(--clr-green));
-}
-
-.circle-wrap .circle .mask {
-    clip: rect(0px, 150px, 150px, 75px);
-  }
   
-  .mask.full,
-  .circle .fill {
+.mask .fill {
+    clip: rect(0px, 30px, 60px, 0px); /* Adjusted the clip size */
+    background-color: hsl(var(--clr-green));
+}
+  
+.circle-wrap .circle .mask {
+    clip: rect(0px, 60px, 60px, 30px); /* Adjusted the clip size */
+}
+  
+.mask.full,
+.circle .fill {
     animation: fill ease-in-out 3s;
     transform: rotate(135deg);
-  }
-  
-  @keyframes fill{
+}
+@keyframes fill{
     0% {
       transform: rotate(0deg);
     }
     100% {
       transform: rotate(135deg);
     }
-  }
+}
 
-  .circle-wrap .inside-circle {
-    width: 122px;
-    height: 122px;
+.circle-wrap .inside-circle {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: hsl(var(--clr-white));
-    line-height: 120px;
+    line-height: 40px;
     text-align: center;
-    margin-top: 14px;
-    margin-left: 14px;
+    margin-top: 10px;
+    margin-left: 10px;
     color: hsl(var(--clr-black));
     position: absolute;
     z-index: 100;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 1em;
 }
+
+.circle-container {
+    position: fixed;
+    bottom: 0;
+    margin-inline: 1rem;
+    right: 0;
+    z-index: 1000;
+}
+
+.circle-container .circle {
+    width: 60px;
+    height: 60px;
+}
+
+.circle-container .circle .mask,
+.circle-container .circle .fill {
+    width: 60px;
+    height: 60px;
+}
+
+.circle-container .circle .mask {
+    clip: rect(0px, 60px, 60px, 30px);
+}
+
+
+
 
 /*Navbar*/
 
@@ -484,37 +509,42 @@ select{
 }
 
 /*product card*/
-.price-box{
-    height: 40px;
-    display: flex;
-    gap: 5px;
-    padding-inline: 0.5rem;
-    background-color: hsl(var(--clr-white));
-    border-radius: 4px;
-    align-items: center;
-    border: 1px solid rgb(167, 159, 159);
-}
-
-.product-card{
-    border: 1px solid rgb(167, 159, 159);
+.product-card {
     width: 300px;
-    border-radius: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     overflow: hidden;
-}
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .product-content {
+    padding: 15px;
+  }
+  
+  .product-content p {
+    margin-bottom: 10px;
+  }
 
-.product-buttons{
-    margin-inline: 1rem;
-}
-
-.product-gap{
-    gap: 30px;
-}
-
-.top-button{
+  .product-badge{
     top: 0;
     right: 0;
-    padding-inline: 15px;
-}
+  }
+  
+  .button-row button {
+    margin-right: 10px;
+  }
+
+  .price-box{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+  }
+  
 /*font*/
 .font-default{
     font-family: var(--font-poppins);
