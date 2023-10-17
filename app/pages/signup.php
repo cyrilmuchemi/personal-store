@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
-    <title>Accounts Zone - Login</title>
+    <title>Accounts Zone - Signup</title>
 </head>
 <body class="font-default">
     <?php
@@ -20,19 +20,38 @@
         <div class="container">
             <div class="login-box d-flex justify-content-center my-5">
                 <div class="login-bg mt-5">
-                    <img src="<?=ROOT?>/assets/vectors/login-vector.png" alt="login vector image"/>
+                    <img src="<?=ROOT?>/assets/vectors/signup-vector.png" alt="signup vector image"/>
                 </div>
                 <div class="login-form">
-                    <h2 class="text-center font-oswold">Sign In Your Account</h2>
+                    <h2 class="text-center font-oswold">Create an Account</h2>
                     <form class="mt-5" action="" method="post">
-                        <label>Username</label>
-                        <div class="my-2">
-                            <input class="form-input" type="text" placeholder="User Name" name="username" required>
+                        <div class="my-2 d-flex">
+                           <div>
+                           <label>Username</label>
+                           <input class="form-input" type="text" placeholder="Username" name="username" required>
+                           </div>
+                           <div>
+                           <label>Email</label>
+                           <input class="form-input" type="text" placeholder="Email" name="email" required>
+                           </div>
                         </div>
-                        <label>Password</label>
-                        <div class="my-2">
-                            <input class="form-input" type="text" placeholder="Password" name="username" required>    
-                        </div> 
+                        <div class="my-2 d-flex">
+                           <label>Phone :</label>
+                           <!--Phone -->
+                           <div class="form-group">
+                                <input type="text" id="mobile_code" class="form-control" placeholder="Phone Number" name="phone">
+                            </div>
+                        </div>
+                        <div class="my-2 d-flex">
+                           <div>
+                           <label>Password</label>
+                           <input class="form-input" type="text" placeholder="Password" name="password" required>
+                           </div>
+                           <div>
+                           <label>Confirm Pasword</label>
+                           <input class="form-input" type="text" placeholder="Confirm Password" name="confirmpassword" required>
+                           </div>
+                        </div>
                         <div class="d-flex justify-content-center align-items-center">
                             <div class="form-check text-start my-3">
                                 <input name="remember" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
@@ -61,7 +80,7 @@
     <?php
         include '../app/pages/includes/footer.php';
     ?>
-      <?php
+    <?php
         include '../app/pages/includes/circle.php';
     ?>
     <script src="<?=ROOT?>/assets/js/index.js"></script>

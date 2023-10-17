@@ -577,7 +577,34 @@ select{
 /*Footer*/
 
 .top-footer{
+    margin-top: 150px;
+    padding-top: 2.5rem;
+    padding-bottom: 1.6rem;
     width: 100%;
+    padding-inline: 2rem;
+    background-image: url("../vectors/white-paper.jpg");
+    display: flex;
+    justify-content: space-between;
+}
+
+.width {
+    width: 350px;
+}
+
+.column-2{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 700px) {
+    .top-footer{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .width {
+        width: 100%;
+    }
 }
 
   
