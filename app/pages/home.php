@@ -205,7 +205,7 @@
                         <div id="fill"></div>
                     </div>
                 </div>
-              </div>
+    </div>
     </div>
     <script src="<?=ROOT?>/assets/js/index.js"></script>
     <script src="<?=ROOT?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
