@@ -556,23 +556,68 @@ select{
     font-size: var(--fs-200);
 }
 
-.login-bg{
-    width: 52%;
+.iti__country-list{
+    display: flex;
+    flex-direction: column;
 }
 
-.login-form{
-    border: 1px solid hsl(var(--clr-green));
-    padding-inline: 4rem;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    border-radius: 10px;
+.login-bg{
+    width: 62%;
 }
 
 @media (max-width: 900px) {
-    .login-bg {
-        display: none;
+    .login-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .sign-up-text{
+        font-size: var(--fs-300);
     }
 }
+
+
+@media (max-width: 500px) {
+    .login-bg{
+        display: none;
+    }
+
+    .sign-up-text{
+        font-size: var(--fs-200);
+    }
+
+    .label{
+        font-size: var(--fs-200);
+    }
+}
+
+.login-container{
+    border: 1px solid hsl(var(--clr-green));
+    border-radius: 10px;
+    width: 100%;
+}
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    padding-inline: 2rem;
+}
+
+
+.sign-up-text{
+    font-size: var(--fs-200);
+}
+
+.signin-input{
+    gap: 3rem;
+}
+
+.phone-container{
+    display: flex;
+    flex-direction: column;
+}
+
 
 /*Footer*/
 
@@ -581,7 +626,6 @@ select{
     padding-bottom: 1.6rem;
     width: 100%;
     padding-inline: 2rem;
-    background-image: url("../vectors/white-paper.jpg");
     display: flex;
     justify-content: space-between;
 }
@@ -621,6 +665,7 @@ select{
 .fs-700{
     font-size: var(--fs-700);
 }
+
 
 
 
