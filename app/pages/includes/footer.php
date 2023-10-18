@@ -1,5 +1,5 @@
-<footer>
-    <div class="top-footer">
+<footer">
+    <div class="top-footer container">
         <div class="column-1">
             <a href="#" class="text-decoration-none">
                 <h3 class="logo"><span class="text-black">Accounts</span><span class="text-green">Zone.</span></h3>
