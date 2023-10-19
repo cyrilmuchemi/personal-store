@@ -1,3 +1,90 @@
+<?php
+    if(!empty($_POST))
+    {
+        //validate signup
+        $errors = [];
+
+
+        $query = "select id from users where username = :username limit 1";
+        $username = query($query, ['username' => $_POST['username']]);
+
+        if(empty($_POST['username']))
+        {
+            $errors['username'] = "Please enter your username!";
+
+        }else
+        if(!preg_match("/^[0-9a-zA-Z]{2,23}+$/", $_POST['username']))
+        {
+            $errors['username'] = "Username can only contain numbers and letters!";
+        }else
+        if($username)
+        {
+            $errors['username'] = "Username already exists";
+        }
+
+        $query = "select id from users where email = :email limit 1";
+        $email = query($query, ['email' => $_POST['email']]);
+
+        if(empty($_POST['email']))
+        {
+            $errors['email'] = "Please enter your email!";
+        }else
+        if($email)
+        {
+            $errors['email'] = "That email already exists";
+        }
+
+        $query = "select id from users where phone = :phone limit 1";
+        $phone = query($query, ['phone' => $_POST['phone']]);
+
+        if(empty($_POST['phone']))
+        {
+            $errors['phone'] = "Please enter your phone number!";
+        }else
+        if($phone)
+        {
+            $errors['phone'] = "That phone number is in use!";
+        }
+
+
+        if(empty($_POST['password']))
+        {
+            $errors['password'] = "Please enter your password!";
+        }else
+        if(strlen($_POST['password'] < 8))
+        {
+            $errors['password'] = "Password must be 8 characters or more";
+        }else
+        if(!preg_match("/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#\$%])[0-9a-zA-Z!@#\$%]+$/", $_POST['password']))
+        {
+            $errors['password'] = "Password must contain numbers, letters and special characters";
+        }else
+        if($_POST['password'] !== $_POST['confirmpassword'])
+        {
+            $errors['password'] = "Passwords do not match!";
+        }
+
+        if(empty($_POST['terms']))
+        {
+            $errors['terms'] = "Accept terms before proceeding";
+        }
+
+
+        if(empty($errors))
+        {
+            $data = [];
+            $data['username'] = $_POST['username'];
+            $data['email'] = $_POST['email'];
+            $data['phone'] = $_POST['phone'];
+            $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $query = "insert into users (username, email, phone, password) values (:username, :email, :phone, :password)";
+            query($query, $data);
+
+            redirect(login);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,38 +113,41 @@
                 </div>
                 <div class="login-container">
                     <h2 class="text-center font-oswold pt-4">Create an Account</h2>
+                    <?php if(!empty($errors)):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        Please Fix the Errors Below!
+                    </div>
+                    <?php endif;?>
                     <div class="login-form">
                     <form class="mt-5" action="" method="post">
                         <div class="my-2 d-flex signin-input">
                            <div>
                            <label class="label">Username</label>
-                           <input class="form-input" type="text" placeholder="Username" name="username" required>
+                           <input value="<?=old_value('username')?>" class="form-input" type="text" placeholder="Username" name="username" required>
                            </div>
                            <div>
                            <label class="label">Email</label>
-                           <input class="form-input" type="text" placeholder="Email" name="email" required>
+                           <input value="<?=old_value('email')?>"  class="form-input" type="text" placeholder="Email" name="email" required>
                            </div>
                         </div>
                         <div class="my-2 phone-container">
                            <label class="label">Phone Number:</label>
-                           <input class="form-input  phone-container" id="phone" type="tel" name="phone" />
+                           <input class="form-input phone-container" id="phone" type="tel" name="phone"/>
                         </div>
                         <div class="my-2 d-flex signin-input">
                            <div>
                            <label class="label">Password</label>
-                           <input class="form-input" type="text" placeholder="Password" name="password" required>
+                           <input value="<?=old_value('password')?>"  class="form-input" type="text" placeholder="Password" name="password" required>
                            </div>
                            <div>
                            <label class="label">Confirm Pasword</label>
-                           <input class="form-input" type="text" placeholder="Confirm Password" name="confirmpassword" required>
+                           <input value="<?=old_value('confirmpassword')?>"  class="form-input" type="text" placeholder="Confirm Password" name="confirmpassword" required>
                            </div>
                         </div>
                         <div class="d-flex">
                             <div class="form-check text-start my-3 sign-up-text">
-                                <input name="remember" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Accept Terms and conditions
-                                </label>
+                            <label class="form-check-label" for="flexCheckDefault"> Accept Terms and conditions</label>
+                            <input <?=old_checked('terms')?> name="terms" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
                             </div>
                         </div>
                         <div class="my-2">
@@ -74,7 +164,33 @@
                     </form>
                     <div class="alert alert-info" style="display: none;"></div>
                     </div>
+                    <?php if(!empty($errors['username'])):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <?=$errors['username'];?>
+                    </div>
+                <?php endif;?>
+                <?php if(!empty($errors['email'])):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <?=$errors['email'];?>
+                    </div>
+                <?php endif;?>
+                <?php if(!empty($errors['phone'])):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <?=$errors['phone'];?>
+                    </div>
+                <?php endif;?>
+                <?php if(!empty($errors['password'])):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <?=$errors['password'];?>
+                    </div>
+                <?php endif;?>
+                <?php if(!empty($errors['terms'])):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <?=$errors['terms'];?>
+                    </div>
+                <?php endif;?>
                 </div>
+                <!-- end logincontainer-->
             <div>
         </div>
     </main>
