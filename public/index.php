@@ -1,6 +1,6 @@
 <?php
 
-define('ROOT', 'http://localhost/personal-store/public');
+require "../app/core/init.php";
 
 $url = $_GET['url'] ?? 'home';
 $url = explode('/', $url);
