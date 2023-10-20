@@ -4,7 +4,7 @@
         //validate signup
         $errors = [];
 
-        $query = "select * from users where username = :username limit 1";
+        $query = "select username from users where username = :username limit 1";
         $row = query($query, ['username' => $_POST['username']]);
 
         if($row)

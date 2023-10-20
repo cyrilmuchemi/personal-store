@@ -81,10 +81,12 @@
             $data['email'] = $_POST['email'];
             $data['phone'] = $_POST['phone'];
             $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $query = "insert into users (username, email, phone, password) values (:username, :email, :phone, :password)";
+            $data['verify_token'] = md5(rand());
+            $query = "insert into users (username, email, phone, password, verify_token) values (:username, :email, :phone, :password, :verify_token)";
             query($query, $data);
 
-            redirect('login');
+            sendemail_verify($data['username'], $data['email'], $data['verify_token']);
+            $_SESSION['status'] = "Registration Successful! Please verify your email";
         }
     }
 ?>
@@ -120,6 +122,14 @@
                     <?php if(!empty($errors)):?>
                     <div class="alert alert-danger text-center" role="alert">
                         Please Fix the Errors Below!
+                    </div>
+                    <?php endif;?>
+                    <?php  if(isset($_SESSION['status'])):?>
+                    <div class="alert alert-success text-center" role="alert">
+                        <?php 
+                           echo "</p>".$_SESSION['status']."</p>";
+                           unset($_SESSION['status']);
+                        ?>
                     </div>
                     <?php endif;?>
                     <div class="login-form">
