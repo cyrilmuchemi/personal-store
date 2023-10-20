@@ -80,7 +80,7 @@
             $query = "insert into users (username, email, phone, password) values (:username, :email, :phone, :password)";
             query($query, $data);
 
-            redirect(login);
+            redirect('login');
         }
     }
 ?>
@@ -159,7 +159,7 @@
                         </button>
                         </div>
                         <div class="my-4">
-                            <h5>Already have an account? <span class="text-green">Login</span></h5>
+                            <h5>Already have an account? <a class="text-green" href="<?=ROOT?>/login">Login</a></h5>
                         </div>
                     </form>
                     <div class="alert alert-info" style="display: none;"></div>

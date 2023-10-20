@@ -1,3 +1,32 @@
+<?php
+    if(!empty($_POST))
+    {
+        //validate signup
+        $errors = [];
+
+        $query = "select * from users where username = :username limit 1";
+        $row = query($query, ['username' => $_POST['username']]);
+
+        if($row)
+        {
+            $data = [];
+
+            if(password_verify($_POST['password'], $row[0]['password']))
+            {
+                //grant access
+                authenticate($row[0]);
+                redirect('home');
+            }else
+            {
+                $errors['username'] = "Wrong username or password";
+            }
+        }else
+        {
+            $errors['username'] = "Wrong username or password";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +53,11 @@
                 </div>
                 <div class="login-container">
                     <h2 class="text-center font-oswold pt-4">Sign In to Your Account</h2>
+                    <?php if(!empty($errors['username'])):?>
+                    <div class="alert alert-danger text-center" role="alert">
+                       <?=$errors['username']?>
+                    </div>
+                    <?php endif;?>
                     <div class="login-form">
                     <form class="mt-5" action="" method="post">
                         <div class="my-2 d-flex signin-input">
@@ -56,7 +90,7 @@
                         </button>
                         </div>
                         <div class="my-4">
-                            <h5>Don't have an account? <span class="text-green">Create</span></h5>
+                            <h5>Don't have an account? <a class="text-green" href="<?=ROOT?>/signup">Create</a></h5>
                         </div>
                     </form>
                     <div class="alert alert-info" style="display: none;"></div>
