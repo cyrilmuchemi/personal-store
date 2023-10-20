@@ -69,7 +69,7 @@
                         <div class="my-2 d-flex signin-input">
                            <div>
                            <label class="label">Password</label>
-                           <input class="form-input" type="text" placeholder="Password" name="password" required>
+                           <input class="form-input" type="password" placeholder="Password" name="password" required>
                            </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">

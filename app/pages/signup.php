@@ -29,6 +29,10 @@
         {
             $errors['email'] = "Please enter your email!";
         }else
+        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+        {
+          $errors['email'] = "Email not valid";
+        }else
         if($email)
         {
             $errors['email'] = "That email already exists";
@@ -127,7 +131,7 @@
                            </div>
                            <div>
                            <label class="label">Email</label>
-                           <input value="<?=old_value('email')?>"  class="form-input" type="text" placeholder="Email" name="email" required>
+                           <input value="<?=old_value('email')?>"  class="form-input" type="email" placeholder="Email" name="email" required>
                            </div>
                         </div>
                         <div class="my-2 phone-container">
@@ -137,11 +141,11 @@
                         <div class="my-2 d-flex signin-input">
                            <div>
                            <label class="label">Password</label>
-                           <input value="<?=old_value('password')?>"  class="form-input" type="text" placeholder="Password" name="password" required>
+                           <input value="<?=old_value('password')?>"  class="form-input" type="password" placeholder="Password" name="password" required>
                            </div>
                            <div>
                            <label class="label">Confirm Pasword</label>
-                           <input value="<?=old_value('confirmpassword')?>"  class="form-input" type="text" placeholder="Confirm Password" name="confirmpassword" required>
+                           <input value="<?=old_value('confirmpassword')?>"  class="form-input" type="password" placeholder="Confirm Password" name="confirmpassword" required>
                            </div>
                         </div>
                         <div class="d-flex">
