@@ -1,30 +1,30 @@
-<?php
-    if(!empty($_POST))
+<?php 
+
+  if(!empty($_POST))
+  {
+    //validate
+    $errors = [];
+
+    $query = "select * from users where username = :username limit 1";
+    $row = query($query, ['username'=>$_POST['username']]);
+
+    if($row)
     {
-        //validate signup
-        $errors = [];
+      $data = [];
+      if(password_verify($_POST['password'], $row[0]['password']))
+      {
+        //grant access
+        authenticate($row[0]);
+        redirect('home');
 
-        $query = "select username from users where username = :username limit 1";
-        $row = query($query, ['username' => $_POST['username']]);
+      }else{
+        $errors['username'] = "wrong username or password";
+      }
 
-        if($row)
-        {
-            $data = [];
-
-            if(password_verify($_POST['password'], $row[0]['password']))
-            {
-                //grant access
-                authenticate($row[0]);
-                redirect('home');
-            }else
-            {
-                $errors['username'] = "Wrong username or password";
-            }
-        }else
-        {
-            $errors['username'] = "Wrong username or password";
-        }
+    }else{
+      $errors['username'] = "wrong username or password";
     }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -58,18 +58,26 @@
                        <?=$errors['username']?>
                     </div>
                     <?php endif;?>
+                    <?php  if(isset($_SESSION['status'])):?>
+                        <div class="alert alert-success text-center" role="alert">
+                            <?php 
+                            echo "</p>".$_SESSION['status']."</p>";
+                            unset($_SESSION['status']);
+                            ?>
+                        </div>
+                    <?php endif;?>
                     <div class="login-form">
                     <form class="mt-5" action="" method="post">
                         <div class="my-2 d-flex signin-input">
                            <div>
                            <label class="label">Username</label>
-                           <input class="form-input" type="text" placeholder="Username" name="username" required>
+                           <input value="<?=old_value('username')?>" class="form-input" type="text" placeholder="Username" name="username" required>
                            </div>
                         </div>
                         <div class="my-2 d-flex signin-input">
                            <div>
                            <label class="label">Password</label>
-                           <input class="form-input" type="password" placeholder="Password" name="password" required>
+                           <input value="<?=old_value('password')?>" class="form-input" type="password" placeholder="Password" name="password" required>
                            </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">

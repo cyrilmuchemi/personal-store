@@ -11,7 +11,7 @@ function sendemail_verify($name, $email, $verify_token)
 {
     $mail = new PHPMailer(true);
 
-    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -30,12 +30,12 @@ function sendemail_verify($name, $email, $verify_token)
     $mail->Body    = "
     <h2>You have registered with Accounts Zone</h2>
     <h5>Verify your Email address by clicking the link below!</h5>
-    <a href='http://localhost/personal-store/verify-email?token=$verify_token'>Click Here</a>
+    <a href='http://localhost/personal-store/public/verify-email?token=$verify_token'>Click Here</a>
     ";
     $mail->AltBody = "
     <h2>You have registered with Accounts Zone</h2>
     <h5>Verify your Email address by clicking the link below!</h5>
-    <a href='http://localhost/personal-store/verify-email?token=$verify_token'>Click Here</a>
+    <a href='http://localhost/personal-store/public/verify-email?token=$verify_token'>Click Here</a>
     ";
     
 
@@ -60,6 +60,29 @@ function query(string $query, array $data = [])
 
     return false;
 }
+
+function query_row(string $query, array $data = [])
+{
+    $string = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+    try {
+        $con = new PDO($string, DBUSER, DBPASS);
+        
+        $stm = $con->prepare($query);
+        $stm->execute($data);
+
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($result) && !empty($result)) {
+            return $result;
+        } else {
+            return false; 
+        }
+    } catch (PDOException $e) {
+        echo "Database Error: " . $e->getMessage();
+        return false;
+    }
+}
+
 
 function redirect($page)
 {
@@ -116,6 +139,7 @@ function create_tables()
         phone varchar(15) not null,
         password varchar(255) not null,
         verify_token varchar(255) not null,
+        verify_status tinyint(2) default 0 not null,
         date datetime default current_timestamp,
 
         key username (username),
