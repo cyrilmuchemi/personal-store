@@ -16,8 +16,7 @@
         }else
         if(!$email)
         {
-            $errors['email'] = "Your email is not registered!";
-            redirect('signup');
+            $errors['email'] = "Your email is not registered. Sign Up!";
         }
 
         if(empty($errors))
