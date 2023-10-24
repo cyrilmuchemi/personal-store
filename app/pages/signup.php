@@ -131,6 +131,9 @@
                            unset($_SESSION['status']);
                         ?>
                     </div>
+                    <div class="bg-white container text-center"> 
+                        <a href="<?=ROOT?>/resend-email">Resend verification link?</a>
+                    </div>
                     <?php endif;?>
                     <div class="login-form">
                     <form class="mt-5" action="" method="post">
