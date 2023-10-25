@@ -43,20 +43,21 @@ function sendemail_verify($name, $email, $verify_token)
 
 }
 
-function query(string $query, array $data = [])
+function query(string $query, array $data = [], $isUpdate = false)
 {
     try {
         $string = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
         $con = new PDO($string, DBUSER, DBPASS);
         $stm = $con->prepare($query);
-        $stm->execute($data);
-        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
-        
-        if (is_array($result) && !empty($result)) {
+
+        if ($isUpdate) {
+            $stm->execute($data);
+            return $stm->rowCount() > 0;
+        } else {
+            $stm->execute($data);
+            $result = $stm->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
-        
-        return false;
     } catch (PDOException $e) {
         die("Database error: " . $e->getMessage());
     }
@@ -149,10 +150,9 @@ function resend_email_verify($name, $email, $verify_token)
     <a href='http://localhost/personal-store/public/verify-email?token=$verify_token'>Click Here</a>
     ";
     
-
     $mail->send($email);
-
 }
+
 
 //create_tables();
 function create_tables()
@@ -183,6 +183,38 @@ function create_tables()
     )";
     $stm = $con->prepare($query);
     $stm->execute();
+}
 
+function send_password_reset($get_name, $get_email, $token)
+{
+    $mail = new PHPMailer(true);
 
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'ccntszone@gmail.com';                     //SMTP username
+    $mail->Password   = 'dcuy lksd canu vvrm';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('ccntszone@gmail.com', $get_name);
+    $mail->addAddress($get_email);     //Add a recipient
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Reset Password Notification';
+    $mail->Body    = "
+    <h2>Hello</h2>
+    <h5>You are receivig this email because you requested a password reset for your account</h5>
+    <a href='http://localhost/personal-store/public/password-change?token=$token&email=$get_email'>Click Here</a>
+    ";
+    $mail->AltBody = "
+    <h2>Hello</h2>
+    <h5>You are receivig this email because you requested a password reset for your account</h5>
+    <a href='http://localhost/personal-store/public/password-change?token=$token&email=$get_email'>Click Here</a>
+    ";
+    
+    $mail->send($get_email);
 }

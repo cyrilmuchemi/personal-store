@@ -87,7 +87,7 @@
                                     Remember me
                                 </label>
                             </div>
-                            <div class="px-4 text-green sign-up-text">Forgot Your Password?</div>
+                            <div class="px-4 sign-up-text"><a class="text-green" href="<?=ROOT?>/forgot-password">Forgot Your Password?</a></div>
                         </div>
                         <div class="my-2">
                             <button class="btn-view btn-border-pop btn-background-slide uppercase">
