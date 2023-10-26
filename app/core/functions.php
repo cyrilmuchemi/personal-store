@@ -153,6 +153,20 @@ function resend_email_verify($name, $email, $verify_token)
     $mail->send($email);
 }
 
+function create_user_id()
+{
+    $length = rand(4, 20);
+    $number = "";
+
+    for($i = 0; $i < $length; $i++)
+    {
+        $new_rand = rand(0, 9);
+        $number = $number . $new_rand;
+    }
+    
+    return $number;
+}
+
 
 //create_tables();
 function create_tables()
@@ -177,6 +191,8 @@ function create_tables()
         verify_token varchar(255) not null,
         verify_status tinyint(2) default 0 not null,
         date datetime default current_timestamp,
+        role varchar(100) not null,
+        user_id bigint not null,
 
         key username (username),
         key email (email)

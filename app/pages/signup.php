@@ -76,13 +76,24 @@
 
         if(empty($errors))
         {
+            $_POST['user_id'] = create_user_id();
+            $user_query = 'select id from users where user_id = :user_id limit 1';
+            $user_id = query($user_query, ['user_id' => $_POST['user_id']]);
+
             $data = [];
             $data['username'] = $_POST['username'];
             $data['email'] = $_POST['email'];
             $data['phone'] = $_POST['phone'];
             $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $data['verify_token'] = md5(rand());
-            $query = "insert into users (username, email, phone, password, verify_token) values (:username, :email, :phone, :password, :verify_token)";
+            $data['role'] = "customer";
+
+            if(!$user_id)
+            {
+                $data['user_id'] = $_POST['user_id'];
+            }
+            
+            $query = "insert into users (username, email, phone, password, verify_token, role, user_id) values (:username, :email, :phone, :password, :verify_token, :role, :user_id)";
             query($query, $data);
 
             sendemail_verify($data['username'], $data['email'], $data['verify_token']);
