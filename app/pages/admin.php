@@ -1,3 +1,8 @@
+<?php
+  include '../app/pages/includes/access.php';
+  access('ADMIN');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

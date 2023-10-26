@@ -164,6 +164,10 @@ select{
     border: 0;
 }
 
+.decoration-none {
+    text-decoration: none;
+}
+
 .nav-menu{
     border-bottom: hsl(var(--clr-white)/0.08);
 }

@@ -10,11 +10,12 @@
 
     if($row)
     {
-      $data = [];
       if(password_verify($_POST['password'], $row[0]['password']))
       {
         //grant access
-        authenticate($row[0]);
+        $_SESSION['myid'] = $row[0]['user_id'];
+        $_SESSION['name'] = $row[0]['username'];
+        $_SESSION['myrole'] = $row[0]['role'];
         redirect('home');
 
       }else{
