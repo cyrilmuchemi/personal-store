@@ -31,14 +31,6 @@
 
   <!-- Template Main CSS File -->
   <link href="<?=ROOT?>/assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -286,21 +278,35 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/users">
           <i class="bi bi-person"></i>
-          <span>Edit User</span>
+          <span>Users</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?=ROOT?>/admin/add-user">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/categories">
           <i class="bi bi-card-list"></i>
-          <span>Add User</span>
+          <span>Categories</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/products">
+          <i class="bi bi-card-list"></i>
+          <span>Products</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/blogs">
+          <i class="bi bi-card-list"></i>
+          <span>Blogs</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/404">
           <i class="bi bi-dash-circle"></i>
           <span>Error 404</span>
         </a>

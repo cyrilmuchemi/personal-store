@@ -11,7 +11,7 @@ function access($role)
     
 }
 
-$_SESSION["ACCESS"]["ADMIN"] = isset($_SESSION['myrole']) && trim($_SESSION['myrole']) === "admin";
+$_SESSION["ACCESS"]["ADMIN"] = isset($_SESSION['myrole']) && (trim($_SESSION['myrole']) === "admin" || isset($_SESSION['myrole']) && trim($_SESSION['myrole']) === "editor");
 
 $_SESSION["ACCESS"]["CUSTOMER"] = isset($_SESSION['myrole']) && trim($_SESSION['myrole']) === "customer";
 
