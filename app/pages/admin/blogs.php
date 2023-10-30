@@ -1,1 +1,1 @@
-<div>Blogs Page</div>
+<div>Blogs</div>
