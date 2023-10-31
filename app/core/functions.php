@@ -85,6 +85,19 @@ function query_row(string $query, array $data = [])
     }
 }
 
+function str_to_url($url)
+{
+
+   $url = str_replace("'", "", $url);
+   $url = preg_replace('~[^\\pL0-9_]+~u', '-', $url);
+   $url = trim($url, "-");
+   $url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
+   $url = strtolower($url);
+   $url = preg_replace('~[^-a-z0-9_]+~', '', $url);
+   
+   return $url;
+}
+
 
 function redirect($page)
 {
@@ -117,6 +130,11 @@ function logged_in()
         return true;
 
     return false;
+}
+
+function esc($str)
+{
+    return htmlspecialchars($str ?? '');
 }
 
 function resend_email_verify($name, $email, $verify_token)
