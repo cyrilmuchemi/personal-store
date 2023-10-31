@@ -101,15 +101,15 @@ function str_to_url($url)
 
 function redirect($page)
 {
-    header("Location: ".$page);
+    header("Location: ".ROOT.'/'.$page);
     die;
 }
 
-function old_value($key)
+function old_value($key, $default = '')
 {
     if(!empty($_POST[$key]))
         return $_POST[$key];
-    return "";
+    return $default;
 }
 
 function old_checked($key)
