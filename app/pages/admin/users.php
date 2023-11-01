@@ -29,7 +29,7 @@
 
         <div class="form-floating mb-3">
         <select name="role" class="form-select">
-            <option value="user">Customer</option>
+            <option value="customer">Customer</option>
             <option value="admin">Admin</option>
             <option value="editor">Editor</option>
             <option value="seller">Seller</option>
