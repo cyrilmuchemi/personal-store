@@ -173,6 +173,7 @@ function get_pagination_vars()
         'next_link' => $next_link,
         'first_link' => $first_link,
         'prev_link' => $prev_link,
+        'page_number' => $page_number
     ];
 
     return $result;
