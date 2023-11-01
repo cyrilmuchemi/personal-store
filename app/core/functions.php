@@ -239,7 +239,7 @@ function get_image($file)
     return ROOT.'/assets/vectors/no_image.png';
 }
 
-//create_tables();
+create_tables();
 function create_tables()
 {
     $string = "mysql:hostname=".DBHOST.";dbname=". DBNAME;
@@ -270,6 +270,20 @@ function create_tables()
     )";
     $stm = $con->prepare($query);
     $stm->execute();
+
+         $query = "create table if not exists categories(
+            id int primary key auto_increment,
+            name varchar(100) not null,
+            slug varchar(100) not null,
+            image varchar(1024) null,
+            status tinyint default 0,
+
+            key slug (slug),
+            key name (name)
+        )";
+        $stm = $con->prepare($query);
+        $stm->execute();
+    
 }
 
 function send_password_reset($get_name, $get_email, $token)
