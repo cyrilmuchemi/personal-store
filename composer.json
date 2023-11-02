@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ralouphie/mimey": "^1.0"
+    }
+}

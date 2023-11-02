@@ -1,0 +1,44 @@
+:root{
+    /*colors*/
+    --clr-dark: 233, 27%, 13%;
+    --clr-white: 0, 0%, 100%;
+    --clr-green: 156, 73%, 46%;
+    --clr-blue: 196, 100%, 50%;
+    --clr-black: 0, 0%, 0%;
+    /*font families*/
+    --font-oswald: 'Oswald', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-alfa: 'Alfa Slab One', serif;
+}
+
+.font-oswald {
+    font-family: var(--font-oswald);
+}
+/*Category card */
+.category-card-container{
+    position: relative;
+}
+
+.category-card{
+    position: relative;
+    border-radius: 20px;
+    text-align: center;
+    width: 200px;
+    height: 180px;
+    overflow: hidden;
+    background-color: hsl(var(--clr-white));
+    background-image: url("../vectors/category-shape.png");
+    border: 1px solid hsl(var(--clr-dark));
+    background-repeat: no-repeat;
+}
+
+.category-card ::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--clr-green));
+    clip-path: circle(40px at 90% 8%);
+}

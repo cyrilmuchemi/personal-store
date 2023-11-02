@@ -4,6 +4,7 @@ hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active"); 
 })
 
+
 let navigation = document.getElementById('sticky-navigation');
 let navigationOffset = navigation.offsetTop;
 let isSticky = false;

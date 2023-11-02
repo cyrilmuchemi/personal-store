@@ -11,6 +11,10 @@
   if($section == 'users')
   {
     require_once '../app/pages/admin/users-controller.php';
+  }else
+  if($section == 'categories')
+  {
+    require_once '../app/pages/admin/categories-controller.php';
   }
 
   if(!file_exists($filename))
@@ -42,6 +46,7 @@
   <link href="<?=ROOT?>/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?=ROOT?>/assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link href="<?=ROOT?>/assets/css/style.css" rel="stylesheet">
+  <link href="<?=ROOT?>/assets/css/admin.css" rel="stylesheet">
 </head>
 
 <body>
