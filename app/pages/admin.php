@@ -15,6 +15,10 @@
   if($section == 'categories')
   {
     require_once '../app/pages/admin/categories-controller.php';
+  }else
+  if($section == 'products')
+  {
+    require_once '../app/pages/admin/products-controller.php';
   }
 
   if(!file_exists($filename))

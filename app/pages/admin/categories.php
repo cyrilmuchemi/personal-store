@@ -23,7 +23,7 @@
         <button class="mt-4 btn btn-primary w-100 py-2" type="submit">Add Category</button>
         </form>
     </div>
- <!--End Add new user -->
+ <!--End Add new category -->
 
 <?php else:?>
 <div class="text-center mb-4">

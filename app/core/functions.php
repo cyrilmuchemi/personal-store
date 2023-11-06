@@ -227,6 +227,17 @@ function create_user_id()
     return $number;
 }
 
+function old_select($key, $value, $default = "")
+{
+    if(!empty($_POST[$key]) && $_POST[$key] == $value)
+        return " selected ";
+
+    if($default == $value)
+        return "selected";
+
+    return "";
+}
+
 function get_image($file)
 {
 
@@ -239,7 +250,7 @@ function get_image($file)
     }
 }
 
-create_tables();
+//create_tables();
 function create_tables()
 {
     $string = "mysql:hostname=".DBHOST.";dbname=". DBNAME;
@@ -298,7 +309,10 @@ function create_tables()
             trending tinyint(4) not null,
             meta_title varchar(200) not null,
             meta_keywords text not null,
-            created_at timestamp default current_timestamp,
+            date datetime default current_timestamp,
+
+            key slug (slug),
+            key name (name)
         )";
         $stm = $con->prepare($query);
         $stm->execute();
