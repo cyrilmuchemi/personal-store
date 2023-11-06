@@ -42,9 +42,9 @@
     $rows = query($query);
 ?>
 
+<div class="d-flex">
 <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
-    <div class="col">
     <div class="category-card-container">
         <div class="category-card">
             <div class="img-box d-flex justify-content-center">
@@ -58,11 +58,12 @@
     <a class="text-white decoration-none" href="<?=ROOT?>/admin/categories/delete/<?=$row['id']?>">
         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
     </a>
-    </div>
+
     <?php if(!empty($errors['image'])) :?>
         <?=$errors['image']?>
     <?php endif;?>
     <?php endforeach; ?>
-    <?php endif; ?>
+<?php endif; ?>
+</div>
 
 <?php endif;?>

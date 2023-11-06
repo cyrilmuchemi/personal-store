@@ -283,6 +283,25 @@ function create_tables()
         )";
         $stm = $con->prepare($query);
         $stm->execute();
+
+        $query = "create table if not exists products(
+            id int primary key auto_increment,
+            category_id int not null,
+            name varchar(150) not null,
+            slug varchar(200) not null,
+            small_description text not null,
+            description text not null,
+            original_price int not null,
+            selling_price int not null,
+            image varchar(250) not null,
+            status tinyint(4) not null,
+            trending tinyint(4) not null,
+            meta_title varchar(200) not null,
+            meta_keywords text not null,
+            created_at timestamp default current_timestamp,
+        )";
+        $stm = $con->prepare($query);
+        $stm->execute();
     
 }
 
