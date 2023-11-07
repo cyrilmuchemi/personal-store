@@ -29,35 +29,39 @@
         </select>
         <div class="form-floating mb-3">
         <input name="account_name" type="text" class="form-control">
-        <label for="floatingPassword">Account Name</label>
+        <label>Account Name</label>
         </div>
         <div class="form-floating mb-3">
         <input name="account_email" type="text" class="form-control">
-        <label for="floatingPassword">Account Email</label>
+        <label>Account Email</label>
         </div>
         <div class="form-floating mb-3">
         <input name="account_password" type="text" class="form-control">
-        <label for="floatingPassword">Account Password</label>
+        <label>Account Password</label>
         </div>
         <div class="form-floating mb-3">
         <input name="account_metrics" type="text" class="form-control">
-        <label for="floatingPassword">Account Metrics</label>
+        <label>Account Metrics</label>
         </div>
         <div class="form-floating mb-3">
         <input name="account_location" type="text" class="form-control">
-        <label for="floatingPassword">Account Location</label>
+        <label>Account Location</label>
         </div>
         <div class="form-floating mb-3">
         <input name="account_old_price" type="text" class="form-control">
-        <label for="floatingPassword">Account Old Price</label>
+        <label>Account Old Price</label>
         </div>
         <div class="form-floating mb-3">
         <input name="account_new_price" type="text" class="form-control">
-        <label for="floatingPassword">Account New Price</label>
+        <label>Account New Price</label>
         </div>
         <div class="form-floating mb-3">
         <input name="small_description" type="text" class="form-control">
-        <label for="floatingPassword">Small Description</label>
+        <label>Small Description</label>
+        </div>
+        <div class="form-floating mb-3">
+        <input name="sales" type="text" class="form-control">
+        <label>Sales Total</label>
         </div>
         <select name="status" class="form-select">
             <option selected>Status</option>
@@ -102,7 +106,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
                     <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
                     </svg>
-                <span>10</span>
+                <span><?=$row['sales']?></span>
                 <span>sales</span>
                 </p>
                 <div class="button-row d-flex justify-content-between">
@@ -145,7 +149,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
                     <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
                     </svg>
-                <span>10</span>
+                <span><?=$dis['sales']?></span>
                 <span>sales</span>
             </p>
                 <div class="button-row d-flex justify-content-between">

@@ -47,13 +47,14 @@ if($action == 'add'){
         $data['selling_price'] = $_POST['account_new_price'];
         $data['small_description'] = $_POST['small_description'];
         $data['status'] = $_POST['status'];
+        $data['sales'] = $_POST['sales'];
         $data['slug'] = $slug;
 
         if (!empty($destination)) {
             $data['image'] = $destination;
         }
 
-        $query = "INSERT INTO products (name, slug, image, category_id, owner_email, owner_password, account_location, account_metrics, original_price, selling_price, small_description, status) VALUES (:account_name, :slug, :image, :category_id, :owner_email, :owner_password, :account_location, :account_metrics, :original_price, :selling_price, :small_description, :status)";
+        $query = "INSERT INTO products (name, slug, image, category_id, owner_email, owner_password, account_location, account_metrics, original_price, selling_price, small_description, status, sales) VALUES (:account_name, :slug, :image, :category_id, :owner_email, :owner_password, :account_location, :account_metrics, :original_price, :selling_price, :small_description, :status, :sales)";
         query($query, $data);
 
         redirect('admin/products');
