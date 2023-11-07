@@ -77,8 +77,6 @@
         </h4>
     </div>
 
-    <div><h4>New Products</h4></div>
-
     <?php
         $limit = 3; 
         $offset = ($PAGE['page_number'] - 1) * $limit;
@@ -87,9 +85,12 @@
         $query_discount = "select * from products where status = 2 order by id desc limit $limit offset $offset";
         $rows_dis = query($query_discount);
     ?>
+
+    <div><h4>New Products</h4></div>
+    <div class="d-flex">
     <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
-        <div class="product-card position-relative">
+        <div class="product-card position-relative" type="button">
             <div class="product-badge position-absolute px-2 py-2">
                 <button class="btn-new text-white">New</button>  
             </div>
@@ -123,10 +124,12 @@
             </a>                  
     <?php endforeach; ?>
     <?php endif; ?>
+    </div>
     <div class="mt-4"><h4>Discount Products</h4></div>
+    <div class="d-flex">
     <?php if(!empty($rows_dis)) :?>
     <?php foreach($rows_dis as $dis) :?>
-        <div class="product-card position-relative">
+        <div class="product-card position-relative pointer" type="button">
             <div class="product-badge position-absolute px-2 py-2">
                 <button class="btn-discount text-white">
                     <?php
@@ -164,7 +167,7 @@
             </a>             
     <?php endforeach; ?>
     <?php endif; ?>
-
+    </div>
     <div class="col-md-12 mt-5">
       <a href="<?=$PAGE['first_link']?>">
         <button class="btn btn-success" type="button">First Page</button>
