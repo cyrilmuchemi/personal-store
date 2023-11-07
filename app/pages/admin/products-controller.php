@@ -59,4 +59,26 @@ if($action == 'add'){
         redirect('admin/products');
 
     }
+}else 
+if($action == 'delete')
+{
+  $query= 'delete from products where id = :id limit 1';
+  $row = query_row($query, ['id'=>$id]);
+ 
+  if($row){
+  //validate
+    $errors = [];
+ 
+    if(empty($errors))
+    {
+          //delete from database
+          $data = [];
+          $data['id']     = $id;
+
+        $query = "update products set image = :image, name = :name";
+        query($query, $data);
+
+        redirect('admin/products'); 
+       }
+    }
 }
