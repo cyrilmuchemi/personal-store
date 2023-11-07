@@ -80,12 +80,10 @@
     <?php
         $limit = 3; 
         $offset = ($PAGE['page_number'] - 1) * $limit;
-        $query = "select * from products where status = 1 order by id desc limit $limit offset $offset";
-        $rows = query($query);
-        $query_discount = "select * from products where status = 2 order by id desc limit $limit offset $offset";
+        $query_new = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE products.status = 1 ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
+        $rows = query($query_new);
+        $query_discount = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE products.status = 2 ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
         $rows_dis = query($query_discount);
-        $query_category = "select products.*, categories.name as category_name from products join categories on products.category_id = categories.id order by id desc";
-        $category_row = query_row($query_category);
     ?>
 
     <div><h4>New Products</h4></div>
@@ -98,9 +96,7 @@
             </div>
             <img src="<?=get_image($row['image'])?>" alt="product image">
             <div class="product-content">
-            <?php if(!empty($category_row)) :?>
-                <h5><?=$category_row['category_name']?></h5>
-            <?php endif; ?>
+                 <h5><?= $row['category_name'] ?></h5>
                 <h6 class="fs-700"><?=$row['name']?></h6>
                 <p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
@@ -143,9 +139,7 @@
             </div>
             <img src="<?=get_image($dis['image'])?>" alt="product image">
             <div class="product-content">
-            <?php if(!empty($category_row)) :?>
-                <h5><?=$category_row['category_name']?></h5>
-            <?php endif; ?>
+                <h5><?= $dis['category_name'] ?></h5>
                 <h6 class="fs-700"><?=$dis['name']?></h6>
                 <p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
