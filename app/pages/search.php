@@ -26,6 +26,9 @@
             $find = "%$find%";
             $query = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE products.name LIKE :find ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
             $rows = query($query, ['find'=>$find]);
+
+            $query_category =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE categories.name LIKE :find ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
+            $category = query($query_category, ['find'=>$find]);
         }
     ?>
 <div class="container mt-5">
@@ -33,6 +36,12 @@
 <div class="d-flex mt-5 col-md-10">
 <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
+        <?php
+            include '../app/pages/includes/product.php';
+        ?>
+    <?php endforeach; ?>
+<?php elseif(!empty($category)) :?>
+    <?php foreach($category as $row) :?>
         <?php
             include '../app/pages/includes/product.php';
         ?>
