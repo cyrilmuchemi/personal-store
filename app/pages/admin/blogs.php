@@ -1,6 +1,7 @@
 <?php if($action == "add") :?>
+    <link href="<?=ROOT?>/assets/summernote/summernote-lite.min.css" rel="stylesheet">
   <!-- Add new product -->
-  <div class="col-md-6 mx-auto">
+  <div class="col-md-12 mx-auto">
         <form method="post" enctype="multipart/form-data">
         <h1 class="h3 mb-3 fw-normal text-center">Add a new Blog Post</h1>
 
@@ -20,13 +21,20 @@
         <label>Blog Title</label>
         </div>
         <div class="form-floating">
-            <textarea name="content" class="form-control" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Blog Content</label>
+            <textarea name="content" class="form-control" id="summernote"></textarea>
         </div>
         <button class="mt-4 btn btn-primary w-100 py-2" type="submit">Add Post</button>
         </form>
     </div>
  <!--End Add new product -->
+ <script src="<?=ROOT?>/assets/js/jquery.js"></script>
+ <script src="<?=ROOT?>/assets/summernote/summernote-lite.min.js"></script>
+ <script>
+      $('#summernote').summernote({
+        tabsize: 2,
+        height: 300
+      });
+ </script>
 <?php else :?>
     <div class="text-center mb-4">
         <h4>Blogs
