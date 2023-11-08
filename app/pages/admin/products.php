@@ -28,39 +28,39 @@
             <?php endif; ?>
         </select>
         <div class="form-floating mb-3">
-        <input name="account_name" type="text" class="form-control">
+        <input name="account_name" type="text" class="form-control" required>
         <label>Account Name</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="account_email" type="text" class="form-control">
+        <input name="account_email" type="text" class="form-control" required>
         <label>Account Email</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="account_password" type="text" class="form-control">
+        <input name="account_password" type="text" class="form-control" required>
         <label>Account Password</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="account_metrics" type="text" class="form-control">
+        <input name="account_metrics" type="text" class="form-control" required>
         <label>Account Metrics</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="account_location" type="text" class="form-control">
+        <input name="account_location" type="text" class="form-control" required>
         <label>Account Location</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="account_old_price" type="text" class="form-control">
+        <input name="account_old_price" type="text" class="form-control" required>
         <label>Account Old Price</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="account_new_price" type="text" class="form-control">
+        <input name="account_new_price" type="text" class="form-control" required>
         <label>Account New Price</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="small_description" type="text" class="form-control">
+        <input name="small_description" type="text" class="form-control" required>
         <label>Small Description</label>
         </div>
         <div class="form-floating mb-3">
-        <input name="sales" type="text" class="form-control">
+        <input name="sales" type="text" class="form-control" required>
         <label>Sales Total</label>
         </div>
         <select name="status" class="form-select">

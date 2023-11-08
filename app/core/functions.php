@@ -316,6 +316,18 @@ function create_tables()
         )";
         $stm = $con->prepare($query);
         $stm->execute();
+
+        $query = "create table if not exists blogs(
+            id int primary key auto_increment,
+            image varchar(250) not null,
+            title text not null,
+            content text not null,
+            date datetime default current_timestamp,
+
+            key title (title)
+        )";
+        $stm = $con->prepare($query);
+        $stm->execute();
     
 }
 

@@ -89,7 +89,6 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
         <a class="nav-link collapsed" href="<?=ROOT?>/admin/users">
           <i class="bi bi-person"></i>
           <span>Users</span>
@@ -98,21 +97,20 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?=ROOT?>/admin/categories">
-          <i class="bi bi-card-list"></i>
+        <i class="bi bi-bookmarks"></i>
           <span>Categories</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?=ROOT?>/admin/products">
-          <i class="bi bi-card-list"></i>
+        <i class="bi bi-basket"></i>
           <span>Products</span>
         </a>
       </li><!-- End Profile Page Nav -->
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?=ROOT?>/admin/add-user">
         <a class="nav-link collapsed" href="<?=ROOT?>/admin/blogs">
           <i class="bi bi-card-list"></i>
           <span>Blogs</span>

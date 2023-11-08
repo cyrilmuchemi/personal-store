@@ -595,6 +595,17 @@ select{
 
 /*Footer*/
 
+.blog-card{
+    width: 380px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/*Footer*/
+
 .top-footer{
     padding-top: 2.5rem;
     padding-bottom: 1.6rem;
