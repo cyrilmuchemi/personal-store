@@ -19,6 +19,10 @@
   if($section == 'products')
   {
     require_once '../app/pages/admin/products-controller.php';
+  }else
+  if($section == 'blogs')
+  {
+    require_once '../app/pages/admin/blogs-controller.php';
   }
 
   if(!file_exists($filename))
