@@ -3,6 +3,16 @@
 if($action == 'add'){
     if(!empty($_POST)){
 
+      $slug = str_to_url($_POST['title']);
+
+      $query = "select id from blogs where slug = :slug limit 1";
+      $slug_row = query($query, ['slug'=>$slug]);
+
+      if($slug)
+      {
+          $slug .= rand(1000, 9999);
+      }
+
         //validate image 
         $allowed = ['image/jpeg', 'image/png', 'image/webp'];
     
@@ -30,12 +40,14 @@ if($action == 'add'){
         $data = [];
         $data['title'] = $_POST['title'];
         $data['content'] = $_POST['content'];
+        $data['slug'] = $slug;
+
 
         if (!empty($destination)) {
             $data['image'] = $destination;
         }
 
-        $query = "INSERT INTO blogs (title, image, content) VALUES (:title, :image, :content)";
+        $query = "INSERT INTO blogs (title, image, content, slug) VALUES (:title, :image, :content, :slug)";
         query($query, $data);
 
         redirect('admin/blogs');

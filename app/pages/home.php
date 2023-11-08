@@ -15,32 +15,15 @@
     <?php
         include '../app/pages/includes/header.php';
     ?>
-    <!--slider -->
-        <link rel="stylesheet" href="<?=ROOT?>/assets/slider/ism/css/my-slider.css"/>
-        <script src="<?=ROOT?>/assets/slider/ism/js/ism-2.2.min.js"></script>
-        <div class="ism-slider" data-transition_type="fade" data-play_type="loop" id="my-slider">
-        <ol>
-            <li>
-            <img src="<?=ROOT?>/assets/slider/ism/image/slides/dstv.png">
-            </li>
-            <li>
-            <img src="<?=ROOT?>/assets/slider/ism/image/slides/verbit.png">
-            </li>
-            <li>
-            <img src="<?=ROOT?>/assets/slider/ism/image/slides/writerbay.png">
-            </li>
-            <li>
-            <img src="<?=ROOT?>/assets/slider/ism/image/slides/netflix.png">
-            </li>
-        </ol>
-        </div>
-    <!--end slider -->
+    <?php
+        include '../app/pages/includes/slider.php';
+    ?>
     <main>
         <div class="body-wrapper">
            <div class="hero container">
                 <div class="d-flex justify-content-center">
-                    <form action="" class="search-bar my-4">
-                    <input type="text" placeholder="search account" name="q"/>
+                    <form action="<?=ROOT?>/search" class="search-bar my-4" role="search">
+                    <input value="<?=$_GET['find'] ?? ''?>" type="text" placeholder="search account" name="find" aria-label="Search"/>
                     <button type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -254,10 +237,5 @@
         include '../app/pages/includes/footer.php';
       ?>
     </main>
-    <?php
-        include '../app/pages/includes/circle.php';
-    ?>
-    <script src="<?=ROOT?>/assets/js/index.js"></script>
-    <script src="<?=ROOT?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
