@@ -37,9 +37,11 @@ if($action == 'add'){
             }
         }
 
+        $new_content = remove_images_from_content($_POST['content']);
+
         $data = [];
         $data['title'] = $_POST['title'];
-        $data['content'] = $_POST['content'];
+        $data['content'] = $new_content;
         $data['slug'] = $slug;
 
 

@@ -331,6 +331,36 @@ function create_tables()
     
 }
 
+function remove_images_from_content($content, $folder = 'uploads/')
+{
+
+	preg_match_all("/<img[^>]+/", $content, $matches);
+
+	if(is_array($matches[0]) && count($matches[0]) > 0)
+	{
+		foreach ($matches[0] as $img) {
+
+			if(!strstr($img, "data:"))
+			{
+				continue;
+			}
+
+			preg_match('/src="[^"]+/', $img, $match);
+			$parts = explode("base64,", $match[0]);
+
+			preg_match('/data-filename="[^"]+/', $img, $file_match);
+
+			$filename = $folder.str_replace('data-filename="', "", $file_match[0]);
+
+			file_put_contents($filename, base64_decode($parts[1]));
+			$content = str_replace($match[0], 'src="'.$filename, $content);
+			
+
+		}
+	}
+	return $content;
+}
+
 function send_password_reset($get_name, $get_email, $token)
 {
     $mail = new PHPMailer(true);
