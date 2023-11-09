@@ -23,6 +23,10 @@
   if($section == 'blogs')
   {
     require_once '../app/pages/admin/blogs-controller.php';
+  }else
+  if($section == 'slides')
+  {
+    require_once '../app/pages/admin/slides-controller.php';
   }
 
   if(!file_exists($filename))
@@ -121,6 +125,15 @@
         </a>
       </li><!-- End Register Page Nav -->
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/slides">
+        <i class="bi bi-card-image"></i>
+          <span>Slides</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+      </li>
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">

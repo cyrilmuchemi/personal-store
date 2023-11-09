@@ -74,6 +74,9 @@
                 </div>
             </div>
     </a>
+    <a class="text-white decoration-none" href="<?=ROOT?>/admin/blogs/delete/<?=$row['id']?>">
+        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+    </a>
     <?php if(!empty($errors['image'])) :?>
         <?=$errors['image']?>
     <?php endif;?>

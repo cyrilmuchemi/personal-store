@@ -328,7 +328,17 @@ function create_tables()
         )";
         $stm = $con->prepare($query);
         $stm->execute();
-    
+
+        $query = "create table if not exists slides(
+            id int primary key auto_increment,
+            image varchar(250) not null,
+            caption varchar(100) not null,
+            date datetime default current_timestamp,
+
+            key image (image)
+        )";
+        $stm = $con->prepare($query);
+        $stm->execute();
 }
 
 function remove_images_from_content($content, $folder = 'uploads/')
