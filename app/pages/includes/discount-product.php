@@ -6,7 +6,7 @@
 
 <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
-            <div class="product-card position-relative" type="button">
+            <div class="discount-card position-relative" type="button">
                 <div class="product-badge position-absolute px-2 py-2">
                     <button class="btn-discount text-white">
                         <?php

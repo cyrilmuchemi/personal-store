@@ -1,7 +1,6 @@
     <?php
             include '../app/pages/includes/head.php';
     ?>
-    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
     <?php
         include '../app/pages/includes/header.php';
     ?>
@@ -33,7 +32,7 @@
                   Below are some of our latest digital products.</br>Fell free to browse through them.
                 </p>
             </div>
-            <div id="latest products" class="container mt-5">
+            <div id="latest products" class="mt-5 container">
               <div id="latest" class="d-flex product-container flex-wrap">
                   <?php
                     include '../app/pages/includes/latest-product.php';
@@ -43,34 +42,36 @@
             <div class="container">
                 <h3 class="font-oswold custom-top fs-800">Discount Products %</h3>
             </div>
-            <div id="discount products" class="container d-flex mt-2">
-              <div id="latest" class="product-container wrapper">
+            <div id="discount products" class="container mt-4">
+              <div class="wrapper">
                   <div class="carousel owl-carousel">
-                    <div class="card">
                     <?php
                         include '../app/pages/includes/discount-product.php';
                     ?>
-                    </div>
                   </div>
               </div>
             </div>
+
             <?php
                 include '../app/pages/includes/footer.php';
              ?>
-             <script src="<?=ROOT?>/assets/js/jquery.js"></script>
-             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="<?=ROOT?>/assets/js/jquery.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
              <script>
                   $(".carousel").owlCarousel({
                     loop:true,
-                    autoplay: true;
+                    autoplay: true,
                     autoplayTimeout: 2000,
+                    dotsContainer: '.owl-dots', 
                     autoplayHoverPause: true,
                     responsive: {
                         0:{
                             items: 1,
                             nav: false
                         },
-                        600:{
+                        800:{
                             items: 2,
                             nav: false
                         },
