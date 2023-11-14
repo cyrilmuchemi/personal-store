@@ -27,7 +27,7 @@
                   </div>
             </div>
             <div class="container">
-                <h3 class="font-oswold text-center custom-top fs-800">Latest Products</h3>
+                <h3 class="font-oswold text-center custom-top fs-700">Latest Products</h3>
                 <p class="text-center">
                   Below are some of our latest digital products.</br>Fell free to browse through them.
                 </p>
@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="container">
-                <h3 class="font-oswold custom-top fs-800">Discount Products %</h3>
+                <h3 class="font-oswold custom-top fs-700">Discount Products %</h3>
             </div>
             <div id="discount products" class="container mt-4">
               <div class="wrapper">
@@ -51,10 +51,37 @@
                   </div>
               </div>
             </div>
-
-            <?php
-                include '../app/pages/includes/footer.php';
-             ?>
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn-view btn-border-pop btn-background-slide uppercase">
+                    View More
+                </button>
+            </div>
+            <div id="frequently-asked-questions">
+                <h4 class="text-center font-oswold mt-5 mb-4">Frequently Asked Questions</h4>
+                <?php
+                    include '../app/pages/includes/accordion.php';
+                ?>
+            </div>
+            <div class="container">
+                <h3 class="font-oswold text-center custom-top fs-700">See Our Latest News</h3>
+                <p class="text-center">
+                  Here are some of our latest blogs.
+                </p>
+            </div>
+            <div id="logs" class="container mt-4 mb-4">
+              <div class="wrapper">
+                  <div class="carousel owl-carousel">
+                    <?php
+                        include '../app/pages/includes/blog.php';
+                    ?>
+                  </div>
+              </div>
+            </div>
+            <div id="footer" class="mt-4">
+                <?php
+                    include '../app/pages/includes/footer.php';
+                ?>
+            </div>
                 <script src="<?=ROOT?>/assets/js/jquery.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -64,20 +91,16 @@
                     loop:true,
                     autoplay: true,
                     autoplayTimeout: 2000,
-                    dotsContainer: '.owl-dots', 
                     autoplayHoverPause: true,
                     responsive: {
                         0:{
                             items: 1,
-                            nav: false
                         },
                         800:{
                             items: 2,
-                            nav: false
                         },
                         1000:{
                             items: 3,
-                            nav: false
                         },
                     }
                   });
