@@ -44,7 +44,7 @@
             </div>
             <div id="discount products" class="container mt-4">
               <div class="wrapper">
-                  <div class="carousel owl-carousel">
+                  <div class="carousel owl-carousel d-flex justify-content-center">
                     <?php
                         include '../app/pages/includes/discount-product.php';
                     ?>
@@ -102,6 +102,10 @@
                         1000:{
                             items: 3,
                         },
+
+                        1200:{
+                            items: 4,
+                        }
                     }
                   });
              </script>

@@ -9,10 +9,10 @@
     <?php foreach($rows as $row) :?>
         <div class="category-card">
             <div class="img-box d-flex justify-content-center">
-                <img src="<?=get_image($row['image'])?>" alt="category image" width="100">
+                <img src="<?=get_image($row['image'])?>" alt="category image" width="80">
             </div>
             <div class="content-box font-oswald">
-                <h3><?=$row['name']?></h3>
+                <h4><?=$row['name']?></h4>
             </div>
         </div>   
     <?php endforeach; ?>

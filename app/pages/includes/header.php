@@ -58,13 +58,13 @@
                 <div class="my-4">
                     <ul>
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="#">Home</a>
+                            <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/home">Home</a>
                         </li>
                         <li class="px-3">
                             <a class="text-black text-decoration-none text-hover" href="#">Browse</a>
                         </li>
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="#">Categories</a>
+                            <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/blog">Blog</a>
                         </li>
                         <li class="px-3">
                             <a class="text-black text-decoration-none text-hover" href="#">About</a>

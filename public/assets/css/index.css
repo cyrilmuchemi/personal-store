@@ -422,8 +422,7 @@ select{
     position: relative;
     border-radius: 20px;
     text-align: center;
-    width: 200px;
-    height: 180px;
+    height: auto;
     overflow: hidden;
     background-color: hsl(var(--clr-white));
     background-image: url("../vectors/category-shape.png");
@@ -442,16 +441,40 @@ select{
     clip-path: circle(40px at 90% 8%);
 }
 
-@media (max-width: 500px) {
-    .category-card {
-        width: 100%;
-        height: auto;
-    }
+@media (min-width: 1200px) {
 
-    .category-card::before {
-        clip-path: none; 
+    .category-card {
+        width: 20%;
     }
+   
 }
+
+@media (max-width: 1200px) {
+
+    .category-card {
+        width: 23%;
+    }
+   
+}
+
+@media (max-width: 780px) {
+
+    .category-card {
+        width: 33%;
+    }
+   
+}
+
+
+@media (max-width: 500px) {
+
+    .category-card {
+        width: 43%;
+    }
+   
+}
+
+
 
 
 /*Navbar*/
@@ -527,7 +550,6 @@ select{
 
 /*product card*/
 .product-card {
-    width: 300px;
     border: 1px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
@@ -540,6 +562,14 @@ select{
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 1200px) {
+
+    .discount-card {
+        width: 84%;
+    }
+   
 }
   
   .product-card img {
@@ -574,26 +604,67 @@ select{
     gap: 30px;
  }
 
-@media (max-width: 768px) {
-    .product-container{
-       justify-content: center;
-       gap: 20px;
+
+ @media (min-width: 1201px) {
+
+    .product-card {
+        width: 22%;
     }
+   
+}
+
+@media (max-width: 1200px) {
+
+    .product-card {
+        width: 33%;
+    }
+   
+}
+
+
+ @media (max-width: 990px) {
+
+    .product-card {
+        width: 40%;
+    }
+   
+}
+
+
+ @media (max-width: 785px) {
+
+    .product-card {
+        width: 47%;
+    }
+   
+}
+
+ @media (max-width: 550px) {
+
+    .product-card {
+        width: 70%;
+    }
+   
+}
+
+
+@media (max-width: 450px) {
 
     .product-card {
         width: 100%;
-        height: auto;
     }
-      
+   
 }
+
+
+.product-container{
+    justify-content: center;
+   
+ }
 
 /* Owl carousel */
 .carousel .card {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.wrapper {
-    width: 100%;
 }
 
 /*Login Form*/
