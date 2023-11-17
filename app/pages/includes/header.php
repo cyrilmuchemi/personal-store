@@ -61,7 +61,7 @@
                             <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/home">Home</a>
                         </li>
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="#">Browse</a>
+                            <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/browse">Browse</a>
                         </li>
                         <li class="px-3">
                             <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/blog">Blog</a>

@@ -1,5 +1,5 @@
 <footer">
-    <div class="top-footer container">
+    <div class="top-footer container overflow-hidden">
         <div class="column-1">
             <a href="#" class="text-decoration-none">
                 <h3 class="logo"><span class="text-black">Accounts</span><span class="text-green">Zone.</span></h3>
@@ -35,7 +35,7 @@
             <a href="#">Login</a>
             <a href="#">Registration</a>
         </div>
-        <div class="column-3">
+        <div class="column-3 my-3">
             <h3>Newsletter</h3>
             <form>
                 <input type="text" placeholder="Your Email Address"/>

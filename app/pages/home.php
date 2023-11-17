@@ -58,9 +58,11 @@
             </div>
             <div id="frequently-asked-questions">
                 <h4 class="text-center font-oswold mt-5 mb-4">Frequently Asked Questions</h4>
+                <div class="faqs container">
                 <?php
                     include '../app/pages/includes/accordion.php';
                 ?>
+                </div>
             </div>
             <div class="container">
                 <h3 class="font-oswold text-center custom-top fs-700">See Our Latest News</h3>
@@ -76,6 +78,11 @@
                     ?>
                   </div>
               </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn-view btn-border-pop btn-background-slide uppercase">
+                    View More
+                </button>
             </div>
             <div id="footer" class="mt-4">
                 <?php
@@ -103,7 +110,7 @@
                             items: 3,
                         },
 
-                        1200:{
+                        1400:{
                             items: 4,
                         }
                     }

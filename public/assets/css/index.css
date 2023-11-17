@@ -474,9 +474,6 @@ select{
    
 }
 
-
-
-
 /*Navbar*/
 
 .bar {
@@ -567,10 +564,32 @@ select{
 @media (min-width: 1200px) {
 
     .discount-card {
-        width: 84%;
+        width: 87%;
     }
    
 }
+
+@media (min-width: 700px) {
+
+    .discount-card {
+        width: 90%;
+    }
+   
+}
+
+@media (min-width: 500px) {
+
+    .discount-card {
+        width: 93%;
+    }
+
+    
+    .blog-card {
+        width: 93%;
+    }
+   
+}
+  
   
   .product-card img {
     max-width: 100%;
@@ -685,6 +704,13 @@ select{
 
 .login-bg{
     width: 62%;
+}
+
+.faqs{
+    border: 2px solid hsl(var(--clr-green));
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-radius: 20px;
 }
 
 @media (max-width: 900px) {
@@ -825,6 +851,76 @@ div#notes {
 	}
 }
 
+/* Browse Page */
+.search-sec{
+    width: 30%;
+    margin-inline: 1rem;
+    min-height: 100vh;
+}
 
+.display-sec{
+    background: red;
+    width: 70%;
+    min-height: 100vh;
+}
 
+.browse-search{
+    height: 20%;
+    margin-top: 0.8rem;
+}
+
+.browse-categories{
+    height: 80%;
+}
+
+.box-search{
+    margin-inline: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 80%;
+}
+
+.box-search-search{
+    border: 2px solid hsl(var(--clr-green));
+    border-radius: 8px;
+    width: 60%;
+    margin-inline: 1rem;
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.box-search-search input {
+    background: transparent;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.browse-categories-box{
+    margin-inline: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-left: 1.5rem;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 40%;
+}
+
+.browse-range{
+    margin-inline: 0.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1.5rem;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 20%;
+}
 
