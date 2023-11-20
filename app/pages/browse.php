@@ -5,23 +5,47 @@
         include '../app/pages/includes/header.php';
     ?>
      <?php
-        $limit = 5; 
+        $limit = 8; 
         $offset = ($PAGE['page_number'] - 1) * $limit;
 
         $find = $_GET['find'] ?? null;
+        $selectedCategories = $_GET['category'] ?? [];
+        $categoryConditions = '';
+
+        if (!empty($selectedCategories)) {
+            $placeholders = implode(',', array_fill(0, count($selectedCategories), '?'));
+            $categoryConditions = 'AND products.category_id IN (' . $placeholders . ')';
+        
+            $query_check = "SELECT products.*, categories.name AS category_name 
+                            FROM products 
+                            JOIN categories ON products.category_id = categories.id 
+                            WHERE 1 $categoryConditions 
+                            ORDER BY products.id DESC 
+                            LIMIT $limit OFFSET $offset";
+            $rows_check = query($query_check, $selectedCategories);
+
+        } else {
+            $query_check = "SELECT products.*, categories.name AS category_name 
+                            FROM products 
+                            JOIN categories ON products.category_id = categories.id 
+                            ORDER BY products.id DESC 
+                            LIMIT $limit OFFSET $offset";
+        
+            $rows_check = query($query_check);
+        }
 
         if($find)
         {
+
             $find = "%$find%";
-            $query = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE products.name LIKE :find ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
+            $query = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE (products.name LIKE :find OR categories.name LIKE :find) $categoryConditions ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
             $rows = query($query, ['find'=>$find]);
 
-            $query_category =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE categories.name LIKE :find ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
-            $category = query($query_category, ['find'=>$find]);
-        }
-
-        $display_all =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id ORDER BY products.id DESC LIMIT 8 OFFSET $offset";
+        } 
+        
+        $display_all =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
         $display = query($display_all);
+
     ?>
     <main>
         <div class="body-wrapper">
@@ -38,6 +62,7 @@
                         <div class="browse-categories-box">
                             <h4 class="mt-5">Categories</h4>
                             <div class="browse-categories-radio">
+                                <form method="GET">
                                 <?php
                                     $query = "select * from categories order by id desc";
                                     $categories = query($query);
@@ -45,13 +70,15 @@
                                 <?php if(!empty($categories)) : ?>
                                     <?php foreach($categories as $cat) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="<?=$cat['id']?>"id="defaultCheck2">
-                                            <label class="form-check-label" for="defaultCheck2">
-                                                <?=$cat['name']?>
+                                            <input class="form-check-input" type="checkbox" name="category[]" value="<?= $cat['id'] ?>" id="category<?= $cat['id'] ?>" <?= isset($_GET['category']) && in_array($cat['id'], $_GET['category']) ? 'checked' : '' ?>>
+                                            <label class="form-check-label" for="category<?= $cat['id'] ?>">
+                                                <?= $cat['name'] ?>
                                             </label>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
+                                <button class="btn btn-success" type="submit">Submit</button>
+                                </form>
                             </div>
                         </div>
                         <div class="browse-range">
@@ -68,13 +95,13 @@
                                     include '../app/pages/includes/product.php';
                                 ?>
                             <?php endforeach; ?>
-                        <?php elseif(!empty($category)) :?>
-                            <?php foreach($category as $row) :?>
+                        <?php elseif(!empty($rows_check)) :?>
+                            <?php foreach($rows_check as $row) :?>
                                 <?php
                                     include '../app/pages/includes/product.php';
                                 ?>
                             <?php endforeach; ?>
-                        <?php elseif(empty($rows)) :?>
+                        <?php else :?>
                             <?php foreach($display as $row) :?>
                                 <?php
                                     include '../app/pages/includes/product.php';

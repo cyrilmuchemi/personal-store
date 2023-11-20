@@ -43,25 +43,51 @@ function sendemail_verify($name, $email, $verify_token)
 
 }
 
-function query(string $query, array $data = [], $isUpdate = false)
+function query(string $query, array $data = [], bool $isUpdate = false)
 {
     try {
         $string = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
         $con = new PDO($string, DBUSER, DBPASS);
+
         $stm = $con->prepare($query);
 
+        foreach ($data as $key => &$value) {
+            $paramName = is_int($key) ? $key + 1 : ":$key";
+
+            if (is_array($value)) {
+                // Handle array parameters
+                foreach ($value as $index => $item) {
+                    $arrayParamName = "{$key}_{$index}";
+                    $stm->bindValue(":$arrayParamName", $item);
+                }
+                unset($data[$key]); // Remove the original array parameter from $data
+            } else {
+                $stm->bindValue($paramName, $value);
+            }
+        }
+
         if ($isUpdate) {
-            $stm->execute($data);
-            return $stm->rowCount() > 0;
+            $success = $stm->execute();
+            return $success && $stm->rowCount() > 0;
         } else {
-            $stm->execute($data);
+            $success = $stm->execute();
+
+            if (!$success) {
+                // Handle query execution failure
+                return false;
+            }
+
             $result = $stm->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
     } catch (PDOException $e) {
+        // Log the error or handle it appropriately
         die("Database error: " . $e->getMessage());
     }
 }
+
+
+
 
 function query_row(string $query, array $data = [])
 {
@@ -137,36 +163,37 @@ function esc($str)
     return htmlspecialchars($str ?? '');
 }
 
-function get_pagination_vars()
-{
-    /* Set Pagination Variables */
+function get_pagination_vars() {
     $page_number = $_GET['page'] ?? 1;
-    $page_number = empty($page_number) ? 1 : (int)$page_number;
+    $page_number = empty($page_number) ? 1 : (int) $page_number;
     $page_number = $page_number < 1 ? 1 : $page_number;
 
-    $current_link =  $_GET['url'] ?? 'login';
-    $current_link = ROOT.'/'.$current_link;
+    $current_link = $_GET['url'] ?? 'login';
+    $current_link = ROOT . '/' . $current_link;
     $query_string = "";
 
-    foreach($_GET as $key => $value)
-    {
-        if($key != 'url')
-            $query_string .= "&".$key."=".$value;
+    foreach ($_GET as $key => $value) {
+        if ($key !== 'url' && $key !== 'page') {
+            if (!is_array($value)) {
+                $query_string .= "&" . $key . "=" . $value;
+            } else {
+                // Handle array values if needed
+            }
+        }
     }
 
-    if(!strstr($query_string, "page="))
-    {
-        $query_string .= "&page=".$page_number; 
+    if (!strstr($query_string, "page=")) {
+        $query_string .= "&page=" . $page_number;
     }
 
     $query_string = trim($query_string, "&");
-    $current_link .=  "?". $query_string; 
+    $current_link .= "?" . $query_string;
 
-    $current_link = preg_replace("/page=.*/", "page=".$page_number, $current_link);
-    $next_link = preg_replace("/page=.*/", "page=".($page_number + 1), $current_link);
-    $first_link = preg_replace("/page=.*/", "page=1", $current_link);
+    $current_link = preg_replace("/page=.*/", "page=" . $page_number, $current_link);
+    $next_link = preg_replace("/page=.*/", "page=" . ($page_number + 1), $current_link);
+    $first_link = preg_replace("/page=.*/", "", $current_link);  // Remove page parameter for the first page link
     $prev_page_number = $page_number < 2 ? 1 : $page_number - 1;
-    $prev_link = preg_replace("/page=.*/", "page=".$prev_page_number, $current_link);
+    $prev_link = preg_replace("/page=.*/", "page=" . $prev_page_number, $current_link);
 
     $result = [
         'current_link' => $current_link,
@@ -178,6 +205,8 @@ function get_pagination_vars()
 
     return $result;
 }
+
+
 
 function resend_email_verify($name, $email, $verify_token)
 {
