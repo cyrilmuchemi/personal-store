@@ -4,6 +4,25 @@
     <?php
         include '../app/pages/includes/header.php';
     ?>
+     <?php
+        $limit = 5; 
+        $offset = ($PAGE['page_number'] - 1) * $limit;
+
+        $find = $_GET['find'] ?? null;
+
+        if($find)
+        {
+            $find = "%$find%";
+            $query = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE products.name LIKE :find ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
+            $rows = query($query, ['find'=>$find]);
+
+            $query_category =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE categories.name LIKE :find ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
+            $category = query($query_category, ['find'=>$find]);
+        }
+
+        $display_all =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id ORDER BY products.id DESC LIMIT 8 OFFSET $offset";
+        $display = query($display_all);
+    ?>
     <main>
         <div class="body-wrapper">
             <div class="d-flex mt-5 gap">
@@ -41,7 +60,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="display-sec"></div>
+                <div class="display-sec">
+                    <div class="d-flex flex-wrap justify-content-center gap my-4">
+                        <?php if(!empty($rows)) :?>
+                            <?php foreach($rows as $row) :?>
+                                <?php
+                                    include '../app/pages/includes/product.php';
+                                ?>
+                            <?php endforeach; ?>
+                        <?php elseif(!empty($category)) :?>
+                            <?php foreach($category as $row) :?>
+                                <?php
+                                    include '../app/pages/includes/product.php';
+                                ?>
+                            <?php endforeach; ?>
+                        <?php elseif(empty($rows)) :?>
+                            <?php foreach($display as $row) :?>
+                                <?php
+                                    include '../app/pages/includes/product.php';
+                                ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        </div>
+                        <div class="d-flex justify-content-center my-4">
+                            <a href="<?=$PAGE['first_link']?>">
+                                <button class="btn btn-success" type="button">First Page</button>
+                            </a>
+                            <a href="<?=$PAGE['prev_link']?>">
+                                <button class="btn btn-success mx-3" type="button">Prev Page</button>
+                            </a>
+                            <a href="<?=$PAGE['next_link']?>">
+                                <button class="btn btn-success float-end" type="button">Next Page</button>
+                            </a>
+                         </div>
+                </div>
             </div>
             <div id="footer" class="mt-4">
                 <?php

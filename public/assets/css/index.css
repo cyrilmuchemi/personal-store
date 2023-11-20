@@ -853,14 +853,13 @@ div#notes {
 
 /* Browse Page */
 .search-sec{
-    width: 30%;
+    width: 25%;
     margin-inline: 1rem;
     min-height: 100vh;
 }
 
 .display-sec{
-    background: red;
-    width: 70%;
+    width: 75%;
     min-height: 100vh;
 }
 
