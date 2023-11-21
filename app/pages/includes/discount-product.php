@@ -25,6 +25,7 @@
                     <span><?=$row['sales']?></span>
                     <span>sales</span>
                     </p>
+                    <a class="decoration-none list-style-none" href="<?=ROOT?>/product-view/<?=$row['slug']?>">
                     <div class="button-row d-flex justify-content-between">
                     <button class="price-box bg-white text-green font-oswold">
                         <span>KSH</span>
@@ -37,6 +38,7 @@
                         Purchase
                     </button>
                     </div>
+                    </a>
                 </div>
             </div>      
     <?php endforeach; ?>
