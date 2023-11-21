@@ -74,8 +74,10 @@
                             </div>
                         </div>
                         <div class="browse-range">
-                            <label for="customRange2" class="form-label">Price Range--(Ksh 100 - 100,000)</label>
-                            <input type="range" class="form-range" min="0" max="5" id="customRange2">
+                            <div class="slideContainer">
+                                <label for="priceRange" class="form-label">Price Range--(Ksh 100 - 100000)</label>
+                                <input type="range" value="100" min="100" max="100000" class="slider" id="priceRange" oninput="updatePriceLabel()">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -121,5 +123,12 @@
             </div>
           </div>
     </main>
+    <script>
+        function updatePriceLabel() {
+            var priceRange = document.getElementById("priceRange");
+            var priceLabel = document.querySelector(".form-label");
+            priceLabel.textContent = "Price Range--(Ksh " + priceRange.value + " - 100000)";
+        }
+    </script>
 </body>
 </html>
