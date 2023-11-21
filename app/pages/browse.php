@@ -33,10 +33,10 @@
             $query = "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id WHERE (products.name LIKE :find OR categories.name LIKE :find) $categoryConditions ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
             $rows = query($query, ['find'=>$find]);
 
-        } 
-        
-        $display_all =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
-        $display = query($display_all);
+        }else{
+            $display_all =  "SELECT products.*, categories.name AS category_name FROM products JOIN categories ON products.category_id = categories.id ORDER BY products.id DESC LIMIT $limit OFFSET $offset";
+            $display = query($display_all);
+        }
 
     ?>
     <main>
@@ -73,16 +73,10 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="browse-range">
-                            <div class="slideContainer">
-                                <label for="priceRange" class="form-label">Price Range--(Ksh 100 - 100000)</label>
-                                <input type="range" value="100" min="100" max="100000" class="slider" id="priceRange" oninput="updatePriceLabel()">
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="display-sec">
-                    <div class="d-flex flex-wrap justify-content-center gap my-4">
+                    <div id="productContainer" class="d-flex flex-wrap justify-content-center gap my-4">
                         <?php if(!empty($rows)) :?>
                             <?php foreach($rows as $row) :?>
                                 <?php
@@ -95,6 +89,12 @@
                                     include '../app/pages/includes/product.php';
                                 ?>
                             <?php endforeach; ?>
+                            <?php elseif(!empty($range)) :?>
+                                <?php foreach($range as $row) :?>
+                                    <?php
+                                        include '../app/pages/includes/product.php';
+                                    ?>
+                                <?php endforeach; ?>
                         <?php else :?>
                             <?php foreach($display as $row) :?>
                                 <?php
@@ -123,12 +123,5 @@
             </div>
           </div>
     </main>
-    <script>
-        function updatePriceLabel() {
-            var priceRange = document.getElementById("priceRange");
-            var priceLabel = document.querySelector(".form-label");
-            priceLabel.textContent = "Price Range--(Ksh " + priceRange.value + " - 100000)";
-        }
-    </script>
 </body>
 </html>
