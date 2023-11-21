@@ -9,7 +9,7 @@
         $offset = ($PAGE['page_number'] - 1) * $limit;
 
         $find = $_GET['find'] ?? null;
-        $selectedCategories = $_GET['category'] ?? [];
+        $selectedCategories = $_GET['category'] ?? null;
         $categoryConditions = '';
 
         if (!empty($selectedCategories)) {
@@ -24,14 +24,6 @@
                             LIMIT $limit OFFSET $offset";
             $rows_check = query($query_check, $selectedCategories);
 
-        } else {
-            $query_check = "SELECT products.*, categories.name AS category_name 
-                            FROM products 
-                            JOIN categories ON products.category_id = categories.id 
-                            ORDER BY products.id DESC 
-                            LIMIT $limit OFFSET $offset";
-        
-            $rows_check = query($query_check);
         }
 
         if($find)
@@ -49,7 +41,7 @@
     ?>
     <main>
         <div class="body-wrapper">
-            <div class="d-flex mt-5 gap">
+            <div class="browse-page">
                 <div class="search-sec">
                     <div class="browse-search">
                         <div class="box-search">
