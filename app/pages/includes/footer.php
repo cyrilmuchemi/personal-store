@@ -1,4 +1,4 @@
-<footer">
+<footer>
     <div class="top-footer container overflow-hidden">
         <div class="column-1">
             <a href="#" class="text-decoration-none">

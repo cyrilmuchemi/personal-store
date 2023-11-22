@@ -594,8 +594,7 @@ select{
    
 }
   
-  
-  .product-card img {
+.product-card img {
     max-width: 100%;
     height: auto;
 }
@@ -905,6 +904,17 @@ div#notes {
         height: 60px;
     }
     
+    .browse-categories-box{
+        margin-inline: 0.5rem;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        padding-left: 1.5rem;
+        border-radius: 10px;
+        background-color: #fff;
+        height: 40%;
+    }
 }
 
 @media (max-width: 999px) {
@@ -941,6 +951,7 @@ div#notes {
     width: 60%;
     margin-inline: 1rem;
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     height: 60px;
@@ -955,11 +966,65 @@ div#notes {
 
 .browse-categories-box{
     margin-inline: 0.5rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: start;
     padding-left: 1.5rem;
     border-radius: 10px;
     background-color: #fff;
     height: 40%;
+    padding-bottom: 1rem;
 }
+
+/*Product-View*/
+
+@media (min-width: 780px) {
+    .product-view{
+        display: flex;
+        flex-direction: row;
+        gap: 16%;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .details-box{
+        border-radius: 6px;
+        height: auto;
+        padding: 1rem;
+        width: 33%;
+        border: 2px solid hsl(var(--clr-green));
+    }
+}
+
+
+@media (max-width: 780px) {
+    .product-view{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.3rem;
+    }
+
+    .details-box{
+        border-radius: 6px;
+        width: 100%;
+        height: auto;
+        padding-inline: 4rem;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border: 2px solid hsl(var(--clr-green));
+    }
+}
+
+
+.details {
+    background-color: hsl(var(--clr-white));
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: auto;
+}
+
