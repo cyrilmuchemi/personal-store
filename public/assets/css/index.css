@@ -1032,3 +1032,41 @@ div#notes {
     height: auto;
 }
 
+/*Blog Page */
+@media (min-width: 1000px) {
+    .blog-page{
+        display: flex;
+    }
+}
+
+@media (max-width: 1000px) {
+    .blog-page{
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+}
+
+/* Posts */
+
+@media (min-width: 1100px) {
+    .post-page{
+        display: flex;
+    }
+    
+}
+
+@media (max-width: 1000px) {
+    .blog-page{
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+}
+
+.other-box{
+    border: 2px solid hsl(var(--clr-green));
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+}

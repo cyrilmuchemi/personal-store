@@ -51,11 +51,13 @@
                   </div>
               </div>
             </div>
+            <a class="decoration-none" href="<?=ROOT?>/browse">
             <div class="d-flex justify-content-center mt-4">
                 <button class="btn-view btn-border-pop btn-background-slide uppercase">
                     View More
                 </button>
             </div>
+            </a>
             <div id="frequently-asked-questions">
                 <h4 class="text-center font-oswold mt-5 mb-4">Frequently Asked Questions</h4>
                 <div class="faqs container">
@@ -79,11 +81,13 @@
                   </div>
               </div>
             </div>
+            <a class="decoration-none" href="<?=ROOT?>/blog">
             <div class="d-flex justify-content-center mt-4">
                 <button class="btn-view btn-border-pop btn-background-slide uppercase">
                     View More
                 </button>
             </div>
+            </a>
             <div id="footer" class="mt-4">
                 <?php
                     include '../app/pages/includes/footer.php';

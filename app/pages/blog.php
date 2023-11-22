@@ -16,13 +16,13 @@
         include '../app/pages/includes/header.php';
     ?>
     <?php
-        $limit = 5; 
+        $limit = 3; 
         $offset = ($PAGE['page_number'] - 1) * $limit;
         $query = "select * from blogs order by id desc limit $limit offset $offset";
         $rows = query($query);
     ?>
 <div class="container">
-<div class="d-flex mt-5 col-md-10">
+<div class="blog-page mt-5">
 <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
             <div class="blog-card" type="button">
@@ -45,10 +45,9 @@
                     </div>
                 </div>
         </a>
-    <?php if(!empty($errors['image'])) :?>
-        <?=$errors['image']?>
-    <?php endif;?>
     <?php endforeach; ?>
+    <?php elseif(empty($rows)) :?>
+        <div class="alert alert-danger">No Blogs!. <a href="<?=ROOT?>/home">Go back to Home Page</a></div>
 <?php endif; ?>
 </div>
 <div class="col-md-12 mt-5">
