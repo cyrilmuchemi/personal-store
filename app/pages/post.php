@@ -33,6 +33,7 @@
      <?php endif?>
      <?php if(!empty($rows_others)):?>
         <div class="other-posts container mt-3 sm-col-md-6">
+            <h4 class="mt-3 font-oswold">Latest Posts</h4>
         <?php foreach($rows_others as $other) :?>
             <div class="d-flex my-4 other-box">
                 <a href="<?=ROOT?>/post/<?=$other['slug']?>">
