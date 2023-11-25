@@ -29,18 +29,15 @@
             </div>
         </div>
         <div class="column-2">
-            <h3>Useful Links</h3>
-            <a href="#">Browse</a>
-            <a href="#">Contact</a>
-            <a href="#">Login</a>
-            <a href="#">Registration</a>
+            <h3 class="font-oswold">Useful Links</h3>
+            <a class="footer-links" href="<?=ROOT?>/browse">Browse</a>
+            <a class="footer-links" href="<?=ROOT?>/blog">Blogs</a>
+            <a class="footer-links" href="<?=ROOT?>/login">Login</a>
+            <a class="footer-links" href="<?=ROOT?>/signup">Registration</a>
         </div>
         <div class="column-3 my-3">
-            <h3>Newsletter</h3>
-            <form>
-                <input type="text" placeholder="Your Email Address"/>
-                <button>Subscribe</button>
-            </form>
+            <h3 class="font-oswold">Become a Seller</h3>
+            <button class="btn btn-success">Sell Account</button>
         </div>
     </div>
     <?php

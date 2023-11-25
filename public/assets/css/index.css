@@ -714,10 +714,10 @@ select{
 }
 
 .faqs{
-    border: 2px solid hsl(var(--clr-green));
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 @media (max-width: 900px) {
@@ -816,7 +816,29 @@ select{
     }
 }
 
-  
+/*Accordion*/
+
+.accordion {
+	max-width: 500px;
+	width: calc(100% - 20px);
+}
+details {
+	margin-bottom: 10px;
+}
+
+details > summary {
+	padding: 5px 10px;
+	font-size: 1.3em;
+	cursor: pointer;
+    border: 2px solid hsl(var(--clr-green));
+    border-radius: 4px;
+}
+details > p {
+	padding: 5px 10px 10px 20px;
+	font-size: 1.1em;
+    border: 2px solid hsl(var(--clr-green));
+}
+
 /*font*/
 .font-default{
     font-family: var(--font-poppins);
@@ -1069,4 +1091,10 @@ div#notes {
     border-radius: 8px;
     padding: 1rem;
     cursor: pointer;
+}
+
+.footer-links{
+    list-style: none;
+    text-decoration: none;
+    color: hsl(var(--clr-black));
 }

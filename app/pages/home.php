@@ -60,7 +60,7 @@
             </a>
             <div id="frequently-asked-questions">
                 <h4 class="text-center font-oswold mt-5 mb-4">Frequently Asked Questions</h4>
-                <div class="faqs container">
+                <div class="faqs">
                 <?php
                     include '../app/pages/includes/accordion.php';
                 ?>
