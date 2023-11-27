@@ -111,9 +111,6 @@
     <?php
         include '../app/pages/includes/footer.php';
     ?>
-      <?php
-        include '../app/pages/includes/circle.php';
-    ?>
     <script src="<?=ROOT?>/assets/js/index.js"></script>
     <script src="<?=ROOT?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

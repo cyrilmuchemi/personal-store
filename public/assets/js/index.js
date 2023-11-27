@@ -20,15 +20,6 @@ function handleScroll() {
     isSticky = false;
   }
 
-  // Control the circle fill based on scroll position
-    const circleFill = document.getElementById('fill');
-    const scrollableHeight = document.body.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY;
-
-    const fillPercentage = (scrolled / scrollableHeight) * 100;
-    const clampedFillPercentage = Math.min(Math.max(fillPercentage, 0), 100);
-
-    circleFill.style.height = clampedFillPercentage + '%';
 }
 
 window.addEventListener('scroll', handleScroll);

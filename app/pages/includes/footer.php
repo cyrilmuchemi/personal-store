@@ -40,9 +40,8 @@
             <button class="btn btn-success">Sell Account</button>
         </div>
     </div>
-    <?php
-        include '../app/pages/includes/circle.php';
-    ?>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="<?=ROOT?>/assets/js/index.js"></script>
     <script src="<?=ROOT?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </footer>
