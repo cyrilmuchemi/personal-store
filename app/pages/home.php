@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="container">
-                <h3 class="font-oswold custom-top fs-700">Discount Products %</h3>
+                <h3 class="font-oswold custom-top">Discount Products %</h3>
             </div>
             <div id="discount products" class="container mt-4">
               <div class="wrapper">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="container">
-                <h3 class="font-oswold text-center custom-top fs-700">See Our Latest News</h3>
+                <h3 class="font-oswold text-center custom-top">See Our Latest News</h3>
                 <p class="text-center">
                   Here are some of our latest blogs.
                 </p>

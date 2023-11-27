@@ -682,11 +682,33 @@ select{
    
 }
 
-
 .product-container{
     justify-content: center;
-   
  }
+
+/* Search Page */
+
+@media (min-width: 750px) {
+
+    .search-page {
+       display: flex;
+       justify-content: center;
+       gap: 2%;
+    }
+   
+}
+
+@media (max-width: 750px) {
+
+    .search-page {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+       gap: 1.5rem;
+    }
+   
+}
 
 /* Owl carousel */
 .carousel .card {

@@ -5,7 +5,7 @@
     include '../app/pages/includes/header.php';
 ?>
 <?php
-    $limit = 5; 
+    $limit = 3; 
     $offset = ($PAGE['page_number'] - 1) * $limit;
 
     $find = $_GET['find'] ?? null;
@@ -22,7 +22,7 @@
 ?>
 <div class="container mt-5">
     <h3 class="fs-700 font-oswold">Search</h3>
-<div class="d-flex mt-5 justify-content-center search-gap col-md-10">
+<div class="search-page mt-5">
 <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
         <div class="product-card position-relative" type="button">
