@@ -56,18 +56,21 @@
                     <h1 class="logo my-4"><span class="text-black">Accounts</span><span class="text-green">Zone.</span></h1>
                     </a>
                 <div class="my-4">
-                    <ul>
+                    <ul class="navigation-list">
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/home">Home</a>
+                            <a class="text-black text-decoration-none text-hover navlink" href="<?=ROOT?>/home">Home</a>
                         </li>
+                        <div class="nav-line"></div>
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/browse">Browse</a>
+                            <a class="text-black text-decoration-none text-hover navlink" href="<?=ROOT?>/browse">Browse</a>
                         </li>
+                        <div class="nav-line"></div>
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="<?=ROOT?>/blog">Blog</a>
+                            <a class="text-black text-decoration-none text-hover navlink" href="<?=ROOT?>/blog">Blog</a>
                         </li>
+                        <div class="nav-line"></div>
                         <li class="px-3">
-                            <a class="text-black text-decoration-none text-hover" href="#">About</a>
+                            <a class="text-black text-decoration-none text-hover navlink" href="#">About</a>
                         </li>
                     </ul>
                 </div>
