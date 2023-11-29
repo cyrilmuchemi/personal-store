@@ -121,6 +121,9 @@
                     include '../app/pages/includes/footer.php';
                 ?>
             </div>
+            <?php
+                include '../app/pages/includes/bottomnav.php';
+            ?>
           </div>
     </main>
 </body>

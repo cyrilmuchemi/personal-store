@@ -731,6 +731,14 @@ select{
 
 /*Footer*/
 
+@media (max-width: 450px) {
+
+    footer{
+        margin-bottom: 3.2rem;
+    }
+   
+}
+
 .top-footer{
     padding-top: 2.5rem;
     padding-bottom: 1.6rem;
@@ -1045,20 +1053,38 @@ div#notes {
 
 /*Bottom Navbar */
 
-.bottom-navigation{
-    position: relative;
-    background: hsl(var(--clr-green));
-    width: 400px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+.bottom-nav{
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
 }
 
+@media (min-width: 450px) {
+    .bottom-navigation{
+        display: none;
+    }
+     
+}
+
+
+@media (max-width: 450px) {
+    .bottom-navigation{
+        position: relative;
+        background: hsl(var(--clr-green));
+        width: 450px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+    }        
+     
+}
+
+  
 .bottom-navigation ul {
     display: flex;
-    width: 350px;
+    width: 400px;
 }
 
 .bottom-navigation ul li {

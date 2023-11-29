@@ -65,4 +65,7 @@
     <?php
         include '../app/pages/includes/footer.php';
     ?>
+    <?php
+    include '../app/pages/includes/bottomnav.php';
+    ?>
 </body>
