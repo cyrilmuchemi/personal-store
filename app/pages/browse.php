@@ -5,7 +5,7 @@
         include '../app/pages/includes/header.php';
     ?>
      <?php
-        $limit = 8; 
+        $limit = 6; 
         $offset = ($PAGE['page_number'] - 1) * $limit;
 
         $find = $_GET['find'] ?? null;
