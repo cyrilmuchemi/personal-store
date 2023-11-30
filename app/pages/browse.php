@@ -39,14 +39,13 @@
         }
 
     ?>
-    <main>
-        <div class="body-wrapper">
+        <div id="main" class="body-wrapper">
             <div class="browse-page">
                 <div class="search-sec">
                     <div class="browse-search">
                         <div class="box-search">
                             <form class="box-search-search" role="search">
-                            <input value="<?=$_GET['find'] ?? ''?>" type="text" placeholder="search..." name="find" aria-label="Search"/>
+                            <input value="<?=$_GET['find'] ?? ''?>" type="text" placeholder="search..." class="searcher" name="find" aria-label="Search"/>
                             </form>
                         </div>
                     </div>
@@ -125,6 +124,5 @@
                 include '../app/pages/includes/bottomnav.php';
             ?>
           </div>
-    </main>
 </body>
 </html>

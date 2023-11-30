@@ -101,28 +101,13 @@
         }
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <title>Accounts Zone - Signup</title>
-</head>
-<body class="font-default">
+     <?php
+        include '../app/pages/includes/head.php';
+    ?>
     <?php
         include '../app/pages/includes/header.php';
     ?>
-    <main>
+    <main id="main" class="login-page">
         <div class="container">
             <div class="login-box d-flex my-5">
                 <div class="login-bg mt-5">
@@ -221,12 +206,13 @@
                 <!-- end logincontainer-->
             <div>
         </div>
+                </div>
+        <div id="footer">
+            <?php
+                include '../app/pages/includes/footer.php';
+            ?>
+        </div>
     </main>
-    <?php
-        include '../app/pages/includes/footer.php';
-    ?>
-    <script src="<?=ROOT?>/assets/js/index.js"></script>
-    <script src="<?=ROOT?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         const phoneInputField = document.querySelector("#phone");
         const phoneInput = window.intlTelInput(phoneInputField, {
@@ -241,5 +227,8 @@
         info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
         }
     </script>
+    <?php
+    include '../app/pages/includes/bottomnav.php';
+    ?>
 </body>
 </html>

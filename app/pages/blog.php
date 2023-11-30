@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/index.css">
-    <link href="<?=ROOT?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Poppins:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
-    <title>Accounts Zone - Blog</title>
-</head>
-<body class="font-default">
+    <?php
+        include '../app/pages/includes/head.php';
+    ?>
     <?php
         include '../app/pages/includes/header.php';
     ?>
@@ -21,8 +10,8 @@
         $query = "select * from blogs order by id desc limit $limit offset $offset";
         $rows = query($query);
     ?>
-<div class="container">
-<div class="blog-page mt-5">
+<div id="blog-page">
+<div class="blog-page container pt-5">
 <?php if(!empty($rows)) :?>
     <?php foreach($rows as $row) :?>
             <div class="blog-card" type="button">
@@ -50,7 +39,7 @@
         <div class="alert alert-danger">No Blogs!. <a href="<?=ROOT?>/home">Go back to Home Page</a></div>
 <?php endif; ?>
 </div>
-<div class="col-md-12 mt-5">
+<div class=" container col-md-12 mt-5">
       <a href="<?=$PAGE['first_link']?>">
         <button class="btn btn-success" type="button">First Page</button>
       </a>
@@ -61,11 +50,12 @@
         <button class="btn btn-success float-end" type="button">Next Page</button>
       </a>
 </div>
-</div>
-    <?php
+<?php
         include '../app/pages/includes/footer.php';
     ?>
+</div>
     <?php
     include '../app/pages/includes/bottomnav.php';
     ?>
 </body>
+</html>

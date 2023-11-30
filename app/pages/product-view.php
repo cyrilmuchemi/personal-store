@@ -1,7 +1,4 @@
 <?php
-        include '../app/pages/includes/head.php';
-?>
-<?php
     $slug = $url[1] ?? null;
 
     if($slug)
@@ -11,9 +8,12 @@
     }
 ?>
 <?php
+        include '../app/pages/includes/head.php';
+?>
+<?php
     include '../app/pages/includes/header.php';
 ?>
-<div class="body-wrapper">
+<div id="main" class="body-wrapper">
     <div class="product-view">
             <?php if(!empty($row)):?>
             <div class="product-card position-relative" type="button">
@@ -45,23 +45,23 @@
         <div class="details-box">
             <div class="details text-center">
                 <h4 class="py-2"><span class="badge bg-secondary">Description:</span></h4>
-                <div><?=$row['small_description']?></div>
+                <div class="detail-text"><?=$row['small_description']?></div>
             </div>
             <div class="details text-center">
                 <h4 class="py-2"><span class="badge bg-secondary">Location:</span></h4>
-                <div><?=$row['account_location']?></div>
+                <div class="detail-text"><?=$row['account_location']?></div>
             </div>
             <div class="details text-center">
                 <h4 class="py-2"><span class="badge bg-secondary">Email:</span></h4>
-                <div><?=$row['owner_email']?></div>
+                <div class="detail-text"><?=$row['owner_email']?></div>
             </div>
             <div class="details text-center">
                 <h4 class="py-2"><span class="badge bg-secondary">Account Metrics:</span></h4>
-                <div><?=$row['account_metrics']?></div>
+                <div class="detail-text"><?=$row['account_metrics']?></div>
             </div>
             <div class="details text-center">
                 <h4 class="py-2"><span class="badge bg-secondary">Published at:</span></h4>
-                <div><?=$row['created_at']?></div>
+                <div class="detail-text"><?=$row['created_at']?></div>
             </div>
         </div>
     </div>
@@ -109,3 +109,8 @@
                   });
              </script>
 </div>
+<?php
+    include '../app/pages/includes/bottomnav.php';
+?>
+</body>
+</html>

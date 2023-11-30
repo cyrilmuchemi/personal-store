@@ -7,8 +7,7 @@
     <?php
         include '../app/pages/includes/slider.php';
     ?>
-    <main>
-        <div class="body-wrapper">
+        <div id="main" class="body-wrapper">
             <div class="hero container">
                 <div class="d-flex justify-content-center">
                     <form action="<?=ROOT?>/search" class="search-bar my-4" role="search">
@@ -126,6 +125,5 @@
                   });
              </script>
           </div>
-    </main>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <footer>
+    <div class="foot-line container mt-5"></div>
     <div class="top-footer container overflow-hidden">
         <div class="column-1">
-            <a href="#" class="text-decoration-none">
-                <h3 class="logo"><span class="text-black">Accounts</span><span class="text-green">Zone.</span></h3>
+            <a href="<?=ROOT?>/home" class="text-decoration-none">
+                <h3 class="logo"><span class="front-logo">Accounts</span><span class="text-green">Zone.</span></h3>
             </a>
             <div>
                 <p class="width">
@@ -30,10 +31,10 @@
         </div>
         <div class="column-2">
             <h3 class="font-oswold">Useful Links</h3>
-            <a class="footer-links" href="<?=ROOT?>/browse">Browse</a>
-            <a class="footer-links" href="<?=ROOT?>/blog">Blogs</a>
-            <a class="footer-links" href="<?=ROOT?>/login">Login</a>
-            <a class="footer-links" href="<?=ROOT?>/signup">Registration</a>
+            <a class="footer-links navlink" href="<?=ROOT?>/browse">Browse</a>
+            <a class="footer-links navlink" href="<?=ROOT?>/blog">Blogs</a>
+            <a class="footer-links navlink" href="<?=ROOT?>/login">Login</a>
+            <a class="footer-links navlink" href="<?=ROOT?>/signup">Registration</a>
         </div>
         <div class="column-3 my-3">
             <h3 class="font-oswold">Become a Seller</h3>
