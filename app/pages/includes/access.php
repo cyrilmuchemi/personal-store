@@ -5,7 +5,7 @@ function access($role)
 
     if(isset($_SESSION["ACCESS"]) && !$_SESSION['ACCESS'][$role])
     {
-        redirect('access-denied');
+        redirect('login');
         die;
     }
     

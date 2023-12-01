@@ -59,7 +59,9 @@
     <?php foreach($category as $row) :?>
         <div class="product-card position-relative" type="button">
                 <div class="product-content">
-                    <img src="<?=get_image($row['image'])?>" alt="product image">
+                    <a class="decoration-none list-style-none" href="<?=ROOT?>/product-view/<?=$row['slug']?>">
+                        <img src="<?=get_image($row['image'])?>" alt="product image">
+                    </a>
                     <h6><?= $row['category_name'] ?></h6>
                     <h4><?=$row['name']?></h4>
                     <p>
