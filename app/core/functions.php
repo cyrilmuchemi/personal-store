@@ -368,6 +368,21 @@ function create_tables()
         )";
         $stm = $con->prepare($query);
         $stm->execute();
+
+        $query = "create table if not exists sellers(
+            id int primary key auto_increment,
+            email varchar(100) not null,
+            phone varchar(15) not null,
+            date datetime default current_timestamp,
+            role varchar(100) not null,
+            account_name varchar(200) not null,
+            account_price int not null,
+    
+            key phone (phone),
+            key email (email)
+        )";
+        $stm = $con->prepare($query);
+        $stm->execute();
 }
 
 function remove_images_from_content($content, $folder = 'uploads/')

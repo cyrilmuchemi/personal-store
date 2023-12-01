@@ -67,7 +67,7 @@
                         </li>
                         <div class="nav-line"></div>
                         <li class="px-3 navigation-link">
-                            <a class="text-decoration-none text-hover navlink" href="#">About</a>
+                            <a class="text-decoration-none text-hover navlink" href="<?=ROOT?>/about">About</a>
                         </li>
                     </ul>
                 </div>

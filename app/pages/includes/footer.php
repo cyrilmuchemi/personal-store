@@ -38,7 +38,7 @@
         </div>
         <div class="column-3 my-3">
             <h3 class="font-oswold">Become a Seller</h3>
-            <button class="btn btn-success">Sell Account</button>
+            <button class="btn btn-success"><a class="text-white decoration-none" href="<?=ROOT?>/sell">Sell Account</a></button>
         </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

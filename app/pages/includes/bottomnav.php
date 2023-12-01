@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li class="bottom-list">
-                        <a href="#">
+                        <a href="<?=ROOT?>/about">
                             <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                             <span class="text">About</span>
                         </a>
