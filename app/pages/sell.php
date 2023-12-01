@@ -3,6 +3,9 @@
 
         $errors = [];
 
+        $query = "select id from sellers where email = :email limit 1";
+        $email = query($query, ['email' => $_POST['email']]);
+
         if(empty($_POST['email']))
         {
             $errors['email'] = "Please enter your email!";
@@ -10,11 +13,23 @@
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
         {
           $errors['email'] = "Email not valid";
+        }else
+        if($email)
+        {
+            $errors['email'] = "That email already exists";
         }
+
+        $query = "select id from sellers where phone = :phone limit 1";
+        $phone = query($query, ['phone' => $_POST['phone']]);
+
 
         if(empty($_POST['phone']))
         {
             $errors['phone'] = "Please enter your phone number!";
+        }else
+        if($phone)
+        {
+            $errors['phone'] = "That phone number is in use!";
         }
 
         if(empty($_POST['account_name']))

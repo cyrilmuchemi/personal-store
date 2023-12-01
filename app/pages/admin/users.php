@@ -131,6 +131,7 @@
         <th>#</th>
         <th>Username</th>
         <th>Email</th>
+        <th>Phone</th>
         <th>Role</th>
         <th>Date</th>
         <th>Action</th>
@@ -150,6 +151,7 @@
           <td><?=$row['id']?></td>
           <td><?=esc($row['username'])?></td>
           <td><?=$row['email']?></td>
+          <td><?=$row['phone']?></td>   
           <td><?=$row['role']?></td>
           <td><?=date("jS M, Y", strtotime($row['date']))?></td>
           <td>

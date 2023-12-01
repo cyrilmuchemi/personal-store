@@ -27,6 +27,10 @@
   if($section == 'slides')
   {
     require_once '../app/pages/admin/slides-controller.php';
+  }else
+  if($section == 'sellers')
+  {
+    require_once '../app/pages/admin/sellers-controller.php';
   }
 
   if(!file_exists($filename))
@@ -122,6 +126,14 @@
         <a class="nav-link collapsed" href="<?=ROOT?>/admin/blogs">
           <i class="bi bi-card-list"></i>
           <span>Blogs</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?=ROOT?>/admin/sellers">
+        <i class="bi bi-person"></i>
+          <span>Sellers</span>
         </a>
       </li><!-- End Register Page Nav -->
       </li>
