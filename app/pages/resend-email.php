@@ -51,6 +51,9 @@
 <?php
     include '../app/pages/includes/head.php';
 ?>
+<div id="loader-overlay">
+  <div class="loader"></div>
+</div>
 <div class="container">
   <div class="row">
     <div class="alert alert-success col-md-12" role="alert" id="notes">

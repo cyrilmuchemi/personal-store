@@ -107,6 +107,9 @@
     <?php
         include '../app/pages/includes/header.php';
     ?>
+    <div id="loader-overlay">
+        <div class="loader"></div>
+    </div>
     <main id="main" class="login-page">
         <div class="container">
             <div class="login-box d-flex my-5">

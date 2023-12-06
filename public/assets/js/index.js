@@ -232,11 +232,36 @@ function debounce(func, wait) {
 
 const debouncedScroll = debounce(handleScroll, 16);
 
-// Use requestAnimationFrame for smoother scrolling
 function rafScroll() {
   requestAnimationFrame(debouncedScroll);
 }
 
 window.addEventListener('scroll', rafScroll);
 window.addEventListener('resize', handleResize);
+
+document.addEventListener('DOMContentLoaded', function () {
+  showLoader();
+
+  window.addEventListener('load', function () {
+      hideLoader();
+  });
+
+  document.addEventListener('click', function (event) {
+      const target = event.target;
+      if (target.tagName === 'A' && !target.getAttribute('target')) {
+          showLoader();
+      }
+  });
+});
+
+function showLoader() {
+  const loaderOverlay = document.getElementById('loader-overlay');
+  loaderOverlay.style.display = 'flex';
+}
+
+function hideLoader() {
+  const loaderOverlay = document.getElementById('loader-overlay');
+  loaderOverlay.style.display = 'none';
+}
+
 

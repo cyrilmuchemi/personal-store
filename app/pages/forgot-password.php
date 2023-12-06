@@ -59,8 +59,11 @@
 ?>
 
 <?php
-        include '../app/pages/includes/head.php';
-    ?>
+  include '../app/pages/includes/head.php';
+?>
+<div id="loader-overlay">
+    <div class="loader"></div>
+</div>
 <div id=forgot-password class="container">
   <div class="row">
     <div class="alert alert-success col-md-12" role="alert" id="notes">

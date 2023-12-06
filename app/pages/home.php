@@ -7,6 +7,9 @@
     <?php
         include '../app/pages/includes/slider.php';
     ?>
+        <div id="loader-overlay">
+            <div class="loader"></div>
+        </div>
         <div id="main" class="body-wrapper">
             <div class="hero container">
                 <div class="d-flex justify-content-center">

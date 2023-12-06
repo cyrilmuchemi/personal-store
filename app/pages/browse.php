@@ -39,6 +39,9 @@
         }
 
     ?>
+        <div id="loader-overlay">
+            <div class="loader"></div>
+        </div>
         <div id="main" class="body-wrapper">
             <div class="browse-page">
                 <div class="search-sec">

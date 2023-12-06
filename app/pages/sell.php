@@ -66,6 +66,9 @@
 <?php
     include '../app/pages/includes/header.php';
 ?>
+<div id="loader-overlay">
+    <div class="loader"></div>
+</div>
  <div id="main" class="body-wrapper">
     <h1 class="text-green font-oswold text-center pt-5">Sell Your Account</h1>
     <h4 class="text-center">Fill in the form below and our team will reach out to communicate further</h4>

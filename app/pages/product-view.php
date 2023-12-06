@@ -16,6 +16,9 @@
 <?php
     include '../app/pages/includes/header.php';
 ?>
+<div id="loader-overlay">
+    <div class="loader"></div>
+</div>
 <div id="main" class="body-wrapper">
     <div class="product-view">
             <?php if(!empty($row)):?>

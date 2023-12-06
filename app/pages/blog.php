@@ -10,6 +10,9 @@
         $query = "select * from blogs order by id desc limit $limit offset $offset";
         $rows = query($query);
     ?>
+<div id="loader-overlay">
+    <div class="loader"></div>
+</div>
 <div id="blog-page">
 <div class="blog-page container pt-5">
 <?php if(!empty($rows)) :?>

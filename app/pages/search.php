@@ -20,6 +20,9 @@
         $category = query($query_category, ['find'=>$find]);
     }
 ?>
+<div id="loader-overlay">
+    <div class="loader"></div>
+</div>
 <main id="main">
 <div class="container pt-5">
     <h3 class="fs-700 font-oswold">Search</h3>

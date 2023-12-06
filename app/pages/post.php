@@ -18,6 +18,9 @@
         }
     }
 ?>
+    <div id="loader-overlay">
+        <div class="loader"></div>
+    </div>
     <main id="main" class="d-flex flex-column">
     <div class="post-page">
             <?php if(!empty($row)):?>

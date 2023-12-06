@@ -4,6 +4,9 @@
 <?php
     include '../app/pages/includes/header.php';
 ?>
+<div id="loader-overlay">
+    <div class="loader"></div>
+</div>
  <div id="main" class="body-wrapper">
     <div class="container about-container pt-5">
         <div class="about-content">

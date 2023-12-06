@@ -73,6 +73,9 @@
 <?php
      include '../app/pages/includes/head.php';
 ?>
+    <div id="loader-overlay">
+        <div class="loader"></div>
+    </div>
     <main id="main" class="form-signin">
     <div class="container mt-5">
     <form method="post" role="form">
