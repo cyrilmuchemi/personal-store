@@ -29,12 +29,28 @@
                 </ul>
             </div>
     </div>
-
     <script>
     const bottom_list = document.querySelectorAll('.bottom-list');
+    const localStorageKey = 'activeLink';
+
+    function setActiveLink() {
+        const activeIndex = localStorage.getItem(localStorageKey);
+        if (activeIndex !== null) {
+            bottom_list.forEach((item, index) => {
+                if (index == activeIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+    }
 
     function activeLink(e) {
         e.preventDefault();
+        const currentIndex = Array.from(bottom_list).indexOf(this);
+        localStorage.setItem(localStorageKey, currentIndex.toString());
+
         bottom_list.forEach(item => item.classList.remove('active'));
         this.classList.add('active');
         const href = this.querySelector('a').getAttribute('href');
@@ -44,4 +60,6 @@
     }
 
     bottom_list.forEach(item => item.addEventListener('click', activeLink));
+    window.addEventListener('DOMContentLoaded', setActiveLink);
 </script>
+
