@@ -27,14 +27,6 @@
         </form>
     </div>
  <!--End Add new product -->
- <script src="<?=ROOT?>/assets/js/jquery.js"></script>
- <script src="<?=ROOT?>/assets/summernote/summernote-lite.min.js"></script>
- <script>
-      $('#summernote').summernote({
-        tabsize: 2,
-        height: 300
-      });
- </script>
 <?php else :?>
     <div class="text-center mb-4">
         <h4>Blogs
