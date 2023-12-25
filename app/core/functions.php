@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'assets/vendor/autoload.php';
+require_once __DIR__ . '/../../public/assets/vendor/autoload.php';
 
 
 function sendemail_verify($name, $email, $verify_token)
@@ -381,6 +381,20 @@ function create_tables()
             key phone (phone),
             key email (email)
         )";
+        $stm = $con->prepare($query);
+        $stm->execute();
+
+        $query = "create table if not exists cart(
+            id int primary key auto_increment,
+            user_id varchar(100) not null,
+            product_id varchar(100) not null,
+            quantity int not null,
+            created_at datetime default current_timestamp,
+
+            key user_id (user_id),
+            key product_id (product_id)
+        )";
+
         $stm = $con->prepare($query);
         $stm->execute();
 }

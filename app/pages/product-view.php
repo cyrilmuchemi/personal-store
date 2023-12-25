@@ -21,55 +21,30 @@
 </div>
 <div id="main" class="body-wrapper">
     <div class="product-view">
-            <?php if(!empty($row)):?>
-            <div class="product-card position-relative" type="button">
-                <div class="product-content">
-                    <img src="<?=get_image($row['image'])?>" alt="product image">
-                    <h6><?= $row['category_name'] ?></h6>
-                    <h4><?=$row['name']?></h4>
-                    <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
-                        <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
-                        </svg>
-                    <span><?=$row['sales']?></span>
-                    <span>sales</span>
-                    </p>
-                    <div class="button-row d-flex justify-content-between">
-                        <button class="price-box bg-white text-green font-oswold">
-                            <span>KSH</span>
-                            <span><?=$row['selling_price']?></span>
-                        </button>
-                        <button class="btn-view btn-border-pop btn-background-slide uppercase">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
-                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
-                            </svg>
-                            Purchase
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <?php if(!empty($row)):?>    
         <div class="details-box">
-            <div class="details text-center">
-                <h4 class="py-2"><span class="badge bg-secondary">Description:</span></h4>
-                <div class="detail-text"><?=$row['small_description']?></div>
-            </div>
-            <div class="details text-center">
-                <h4 class="py-2"><span class="badge bg-secondary">Location:</span></h4>
+            <img src="<?=get_image($row['image'])?>" alt="product image">
+            <div class=" text-center">
+                <h4 class="pt-2"><span class="badge bg-secondary">Location:</span></h4>
                 <div class="detail-text"><?=$row['account_location']?></div>
             </div>
-            <div class="details text-center">
-                <h4 class="py-2"><span class="badge bg-secondary">Email:</span></h4>
-                <div class="detail-text"><?=$row['owner_email']?></div>
+            <div class=" text-center">
+                <h4 class="pt-2"><span class="badge bg-secondary">Email:</span></h4>
+                <div class="detail-text"><?=$row['fake_email']?></div>
             </div>
-            <div class="details text-center">
-                <h4 class="py-2"><span class="badge bg-secondary">Account Metrics:</span></h4>
+            <div class=" text-center">
+                <h4 class="pt-2"><span class="badge bg-secondary">Account Metrics:</span></h4>
                 <div class="detail-text"><?=$row['account_metrics']?></div>
             </div>
-            <div class="details text-center">
-                <h4 class="py-2"><span class="badge bg-secondary">Published at:</span></h4>
+            <div class=" text-center">
+                <h4 class="pt-2"><span class="badge bg-secondary">Published at:</span></h4>
                 <div class="detail-text"><?=$row['created_at']?></div>
             </div>
         </div>
+    </div>
+    <div class="container my-4 col-md-6">
+        <a href="<?=ROOT?>/cart-page"><button id="add-to-cart" class="btn btn-success mx-4 my-2" type="submit" value="<?=$row['id']?>">Purchase Product</button></a>
+        <a href="<?=ROOT?>/home"><button class="btn btn-danger mx-4 my-2">Back to Homepage</button></a>
     </div>
     <?php endif?>
     <div class="container">
@@ -119,4 +94,3 @@
     include '../app/pages/includes/bottomnav.php';
 ?>
 </body>
-</html>

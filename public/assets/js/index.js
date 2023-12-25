@@ -264,4 +264,88 @@ function hideLoader() {
   loaderOverlay.style.display = 'none';
 }
 
+sendData({}, 'read');
+
+function sendData(obj, type) {
+  let form = new FormData();
+
+  for (let key in obj) {
+    form.append(key, obj[key]);
+  }
+
+  form.append('data_type', type);
+
+  let ajax = new XMLHttpRequest();
+
+  ajax.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      handleResult(ajax.responseText);
+    }
+  };
+
+  ajax.open('post', '/personal-store/app/core/cart.php', true);
+  ajax.send(form);
+}
+
+function handleResult(result) {
+
+  if (!result) {
+    console.log("Empty response");
+  }else{
+    console.log(result)
+  }
+
+  let obj = JSON.parse(result);
+  
+  if(typeof(obj) == 'object'){
+      if(obj.data_type == 'read')
+      {
+        const cartBody = document.querySelector('.cart-body');
+        let str = "";
+
+       if(typeof(obj.data) == 'object'){
+        for(let i = 0; i < obj.data.length; i++){
+          let row = obj.data[i];
+
+          str += `
+          <div>
+            <p>${row.id}</p>
+            <p>${row.product_id}</p>
+            <p>${row.user_id}</p>
+            <p>${row.quantity}</p>
+            <p>${row.created_at}</p>
+          </div>
+          `;
+        }
+       }else{
+        str = "No records found!";
+       }
+        cartBody.innerHTML = str;
+        
+      }else if(obj.data_type == 'save'){
+        if(obj.error){
+          alert("Error:" + obj.error);
+        }else{
+          alert(obj.data);
+          sendData({}, 'read');
+        }
+      }
+    }
+
+}
+
+const addToCart = document.getElementById('add-to-cart');
+
+addToCart.addEventListener('click', function(){
+  let obj = {
+    product_id : this.value
+  }
+
+  sendData(obj, 'save');
+
+});
+
+
+
+
 

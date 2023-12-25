@@ -992,7 +992,7 @@ div#notes {
         border-radius: 6px;
         height: auto;
         padding: 1rem;
-        width: 33%;
+        width: 43%;
         border: 2px solid hsl(var(--clr-green));
     }
 }
@@ -1020,13 +1020,7 @@ div#notes {
 }
 
 
-.details {
-    border-radius: 12px;
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    height: auto;
-}
+
 
 /*Blog Page */
 @media (min-width: 1000px) {
@@ -1246,6 +1240,47 @@ div#notes {
         width: 100%;
     }
 }
+/*Card Page*/
+.cart-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    height: 5.4rem;
+    border: 1px solid hsl(var(--clr-black));
+    border-radius: 10px; /* Adjust the border-radius to control the roundness of the corners */
+    overflow: hidden; /* Ensure the ribbons don't overflow */
+
+    /* Add padding to create space for the ribbons */
+    padding: 20px;
+}
+
+.cart-header::before,
+.cart-header::after {
+    content: '';
+    position: absolute;
+    background-color: hsl(var(--clr-green));
+    width: 80px; /* Adjust the width of the ribbons */
+    height: 30px; /* Adjust the height of the ribbons */
+    z-index: 1; /* Ensure the ribbons are on top of the box */
+}
+
+/* Top left ribbon */
+.cart-header::before {
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 0% 100%);
+}
+
+/* Bottom right ribbon */
+.cart-header::after {
+    bottom: 0;
+    right: 0;
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+
+
 
 /*Page Loader */
 #loader-overlay {

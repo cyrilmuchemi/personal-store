@@ -36,6 +36,10 @@
         <label>Account Email</label>
         </div>
         <div class="form-floating mb-3">
+        <input name="fake_email" type="text" class="form-control" required>
+        <label>Fake Email</label>
+        </div>
+        <div class="form-floating mb-3">
         <input name="account_password" type="text" class="form-control" required>
         <label>Account Password</label>
         </div>
