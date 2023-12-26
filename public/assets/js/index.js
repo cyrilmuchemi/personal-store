@@ -280,6 +280,8 @@ function sendData(obj, type) {
   ajax.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       handleResult(ajax.responseText);
+    }else{
+      console.error('HTTP Error:', this.status);
     }
   };
 
@@ -314,6 +316,7 @@ function handleResult(result) {
             <p>${row.user_id}</p>
             <p>${row.quantity}</p>
             <p>${row.created_at}</p>
+            <p>${row.price}</p>
           </div>
           `;
         }

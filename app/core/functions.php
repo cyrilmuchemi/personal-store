@@ -107,6 +107,7 @@ function query_row(string $query, array $data = [])
         }
     } catch (PDOException $e) {
         echo "Database Error: " . $e->getMessage();
+        echo "SQL Error: " . $e->getMessage();
         return false;
     }
 }
