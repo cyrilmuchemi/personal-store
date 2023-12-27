@@ -13,7 +13,12 @@
 </div>
 <div id="main" class="body-wrapper">
     <div class="container">
-        <div class="cart-body"></div>
+        <div class="cart-body">
+            <div class="cart-header">
+                <h3 class="font-oswold text-green">SHOPPING CART</h3>
+            </div>
+            <div class="cart-card"></div>
+        </div>
     </div>
     <?php
         include '../app/pages/includes/footer.php';

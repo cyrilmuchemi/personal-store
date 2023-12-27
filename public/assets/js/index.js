@@ -280,8 +280,6 @@ function sendData(obj, type) {
   ajax.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       handleResult(ajax.responseText);
-    }else{
-      console.error('HTTP Error:', this.status);
     }
   };
 
@@ -302,7 +300,7 @@ function handleResult(result) {
   if(typeof(obj) == 'object'){
       if(obj.data_type == 'read')
       {
-        const cartBody = document.querySelector('.cart-body');
+        const cartBody = document.querySelector('.cart-card');
         let str = "";
 
        if(typeof(obj.data) == 'object'){
@@ -310,13 +308,51 @@ function handleResult(result) {
           let row = obj.data[i];
 
           str += `
-          <div>
-            <p>${row.id}</p>
-            <p>${row.product_id}</p>
-            <p>${row.user_id}</p>
-            <p>${row.quantity}</p>
-            <p>${row.created_at}</p>
-            <p>${row.price}</p>
+          <div class="mt-5">
+            <div class="cart-content-header text-center pt-2">
+              <h3>Please review your order</h3>
+            </div>
+            <div class="cart-box">
+                <div class="row">
+                  <div class="col-xl-6 mb-xl-5 image-box">
+                    <div class="d-flex flex-column">
+                      <div class="d-flex flex-row justify-content-between px-4 py-3">
+                        <h4 class="font-oswold">${row.cart_item}</h4>
+                        <p class="text-blue">Ksh ${row.price}</p>
+                      </div>
+                      <div class="d-flex">
+                        <div class="cart-img-box">
+                          <img src="${row.image}"/>
+                          <div class="mt-4"><button class="btn btn-danger btn-sm" id="cart-delete">Delete</button></div>
+                        </div>
+                        <div class="px-5">
+                          <p>Value: Ksh${row.price}</p>
+                          <div class="d-flex mb-2">
+                              <span class="badge bg-secondary">Quantity: ${row.quantity}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 mt-xl-0 col-xl-6">
+                    <div class="cart-icon-box d-flex justify-content-between px-3 py-3">
+                        <div class="cart-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                            <span>${row.quantity} items</span>
+                        </div>
+                        <span>Ksh ${row.price}</span>
+                    </div>
+                    <div class="my-3">
+                      <button class="btn btn-primary btn-lg cart-btn font-oswold">GO TO CHECKOUT</button>
+                    </div>
+                    <div class="my-3">
+                      <button class="btn btn-danger btn-lg cart-btn font-oswold">GO BACK HOME</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
           </div>
           `;
         }

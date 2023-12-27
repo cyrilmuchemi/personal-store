@@ -47,14 +47,16 @@ header('Content-Type: application/json');
                 if ($product_row) {
                     $data['price'] = $product_row['selling_price'];
                     $data['image'] = $product_row['image'];
+                    $data['cart_item'] = $product_row['name'];
                 }
         
-                // Use a conditional INSERT to handle existing records
-                $query = 'INSERT INTO cart (user_id, product_id, quantity, price, image) 
-                          VALUES (:user_id, :product_id, :quantity, :price, :image)
-                          ON DUPLICATE KEY UPDATE quantity = :quantity, price = :price, image = :image';
-        
-                $inserted = query($query, $data);
+              // Use a conditional INSERT to handle existing records
+                    $query = 'INSERT INTO cart (user_id, product_id, quantity, price, image, cart_item) 
+                    VALUES (:user_id, :product_id, :quantity, :price, :image, :cart_item)
+                    ON DUPLICATE KEY UPDATE quantity = :quantity, price = :price, image = :image, cart_item = :cart_item';
+
+                    $inserted = query($query, $data);
+
         
                 if (!$inserted) {
                     http_response_code(500);
