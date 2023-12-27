@@ -27,21 +27,32 @@ header('Content-Type: application/json');
             } else {
                 $data['product_id'] = $_POST['product_id'];
                 $data['user_id'] = $_SESSION['myid'];
-                $data['quantity'] = 1;
         
-                // Use a conditional INSERT to handle existing records
-                $query = 'INSERT INTO cart (user_id, product_id, quantity, price, image) 
-                          VALUES (:user_id, :product_id, :quantity, :price, :image)
-                          ON DUPLICATE KEY UPDATE quantity = quantity + 1, price = :price, image = :image';
+                // Fetch existing quantity from the cart for the specified product
+                $quantityQuery = 'SELECT quantity FROM cart WHERE user_id = :user_id AND product_id = :product_id';
+                $existingQuantity = query_row($quantityQuery, $data);
+        
+                // If the product is already in the cart, increment the quantity
+                if ($existingQuantity !== false) {
+                    $data['quantity'] = $existingQuantity + 1;
+                } else {
+                    // If the product is not in the cart, set quantity to 1
+                    $data['quantity'] = 1;
+                }
         
                 // Fetch product details (price and image) separately
-                $query_product = "SELECT products.* FROM cart JOIN products ON cart.product_id = products.id WHERE cart.product_id = :product_id";
+                $query_product = "SELECT products.* FROM products WHERE id = :product_id";
                 $product_row = query_row($query_product, ['product_id' => $data['product_id']]);
         
                 if ($product_row) {
                     $data['price'] = $product_row['selling_price'];
                     $data['image'] = $product_row['image'];
                 }
+        
+                // Use a conditional INSERT to handle existing records
+                $query = 'INSERT INTO cart (user_id, product_id, quantity, price, image) 
+                          VALUES (:user_id, :product_id, :quantity, :price, :image)
+                          ON DUPLICATE KEY UPDATE quantity = :quantity, price = :price, image = :image';
         
                 $inserted = query($query, $data);
         
@@ -53,6 +64,7 @@ header('Content-Type: application/json');
                 }
         
             }
+        
         }
 
         echo json_encode($info);
