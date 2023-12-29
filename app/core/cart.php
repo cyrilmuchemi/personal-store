@@ -15,7 +15,8 @@ header('Content-Type: application/json');
             $query = "select * from cart order by id desc limit 1";
             $result = query($query);
     
-            $info['data'] = $result;
+            $info['data'] = is_array($result) ? $result : []; 
+
         }else
         if ($_POST['data_type'] == 'save') {
             $data = [];
@@ -67,8 +68,21 @@ header('Content-Type: application/json');
         
             }
         
-        }
+        }else
+        if ($_POST['data_type'] == 'delete') {
 
+            try {
+                $id = (int)$_POST['id'];
+                $query = "DELETE FROM cart WHERE id = $id LIMIT 1";
+                $delete_row = query($query);
+
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode(['data_type' => 'error', 'error' => 'Server error: ' . $e->getMessage()]);
+                exit();
+            }
+    
+        }
         echo json_encode($info);
         exit();
         

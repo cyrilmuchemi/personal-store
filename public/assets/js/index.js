@@ -264,125 +264,156 @@ function hideLoader() {
   loaderOverlay.style.display = 'none';
 }
 
+
 sendData({}, 'read');
 
 function sendData(obj, type) {
   let form = new FormData();
 
   for (let key in obj) {
-    form.append(key, obj[key]);
+      form.append(key, obj[key]);
   }
 
   form.append('data_type', type);
 
-  let ajax = new XMLHttpRequest();
-
-  ajax.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      handleResult(ajax.responseText);
-    }
-  };
-
-  ajax.open('post', '/personal-store/app/core/cart.php', true);
-  ajax.send(form);
+  fetch('/personal-store/app/core/cart.php', {
+      method: 'POST',
+      body: form
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+  })
+  .then(data => handleResult(data))
+  .catch(error => {
+      console.error('Fetch Error:', error);
+      // Handle the error gracefully
+      handleResult({ data_type: 'error', error: 'Failed to communicate with the server' });
+  });
 }
 
 function handleResult(result) {
 
-  if (!result) {
-    console.log("Empty response");
-  }else{
-    console.log(result)
-  }
+  if (Array.isArray(result)) {
+    result.forEach(item => {
+        handleItem(item);
+    });
+  }else if(result && typeof result === 'object') {
+    handleItem(result);
+}
 
-  let obj = JSON.parse(result);
-  
-  if(typeof(obj) == 'object'){
-      if(obj.data_type == 'read')
-      {
-        const cartBody = document.querySelector('.cart-card');
-        let str = "";
+}
+function handleItem(item)
+{
+  if (item.data_type === 'delete') {
+    if (item.error) {
+        alert('Error: ' + item.error);
+    } else {
+        // Redirect only after successful delete
+        sendData({}, 'read');
+    }
+}else  if(item.data_type == 'read')
+{
+  const cartBody = document.querySelector('.cart-card');
+  let str = "";
 
-       if(typeof(obj.data) == 'object'){
-        for(let i = 0; i < obj.data.length; i++){
-          let row = obj.data[i];
+ if(typeof(item.data) == 'object'){
+    for(let i = 0; i < item.data.length; i++){
+      let row = item.data[i];
 
-          str += `
-          <div class="mt-5">
-            <div class="cart-content-header text-center pt-2">
-              <h3>Please review your order</h3>
-            </div>
-            <div class="cart-box">
-                <div class="row">
-                  <div class="col-xl-6 mb-xl-5 image-box">
-                    <div class="d-flex flex-column">
-                      <div class="d-flex flex-row justify-content-between px-4 py-3">
-                        <h4 class="font-oswold">${row.cart_item}</h4>
-                        <p class="text-blue">Ksh ${row.price}</p>
-                      </div>
-                      <div class="d-flex">
-                        <div class="cart-img-box">
-                          <img src="${row.image}"/>
-                          <div class="mt-4"><button class="btn btn-danger btn-sm" id="cart-delete">Delete</button></div>
-                        </div>
-                        <div class="px-5">
-                          <p>Value: Ksh${row.price}</p>
-                          <div class="d-flex mb-2">
-                              <span class="badge bg-secondary">Quantity: ${row.quantity}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+      str += `
+      <div class="mt-5">
+        <div class="cart-content-header text-center pt-2">
+          <h3>Please review your order</h3>
+        </div>
+        <div class="cart-box">
+            <div class="row">
+              <div class="col-xl-6 mb-xl-5 image-box">
+                <div class="d-flex flex-column">
+                  <div class="d-flex flex-row justify-content-between px-4 py-3">
+                    <h4 class="font-oswold">${row.cart_item}</h4>
+                    <p class="text-blue">Ksh ${row.price}</p>
                   </div>
-                  <div class="mt-4 mt-xl-0 col-xl-6">
-                    <div class="cart-icon-box d-flex justify-content-between px-3 py-3">
-                        <div class="cart-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                            </svg>
-                            <span>${row.quantity} items</span>
-                        </div>
-                        <span>Ksh ${row.price}</span>
+                  <div class="d-flex">
+                    <div class="cart-img-box">
+                      <img src="${row.image}"/>
+                      <div class="mt-4">
+                        <button class="btn btn-danger btn-sm" onclick="deleteFromCart(${row.id})" id="cart-delete">Delete</button>
+                      </div>
                     </div>
-                    <div class="my-3">
-                      <button class="btn btn-primary btn-lg cart-btn font-oswold">GO TO CHECKOUT</button>
-                    </div>
-                    <div class="my-3">
-                      <button class="btn btn-danger btn-lg cart-btn font-oswold">GO BACK HOME</button>
+                    <div class="px-5">
+                      <p>Value: Ksh${row.price}</p>
+                      <div class="d-flex mb-2">
+                          <span class="badge bg-secondary">Quantity: ${row.quantity}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="mt-4 mt-xl-0 col-xl-6">
+                <div class="cart-icon-box d-flex justify-content-between px-3 py-3">
+                    <div class="cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                        </svg>
+                        <span>${row.quantity} items</span>
+                    </div>
+                    <span>Ksh ${row.price}</span>
+                </div>
+                <div class="my-3">
+                  <button class="btn btn-primary btn-lg cart-btn font-oswold">GO TO CHECKOUT</button>
+                </div>
+                <div class="my-3">
+                  <button class="btn btn-danger btn-lg cart-btn font-oswold">GO BACK HOME</button>
+                </div>
+              </div>
             </div>
-          </div>
-          `;
-        }
-       }else{
-        str = "No records found!";
-       }
-        cartBody.innerHTML = str;
-        
-      }else if(obj.data_type == 'save'){
-        if(obj.error){
-          alert("Error:" + obj.error);
-        }else{
-          alert(obj.data);
-          sendData({}, 'read');
-        }
-      }
+        </div>
+      </div>
+      `;
     }
-
+  }else{
+    str = "No records found!";
+  }
+    cartBody.innerHTML = str;
+    
+  }else if(item.data_type == 'save'){
+    if(item.error){
+      alert("Error:" + item.error);
+    }else{
+      sendData({}, 'read');
+    }
+  }
 }
 
 const addToCart = document.getElementById('add-to-cart');
 
-addToCart.addEventListener('click', function(){
-  let obj = {
-    product_id : this.value
+if(addToCart){
+
+  addToCart.addEventListener('click', function(){
+    let obj = {
+      product_id : this.value
+    }
+  
+    sendData(obj, 'save');
+  
+  });
+
+}
+
+function deleteFromCart(id) {
+
+  if (!confirm('Are you sure you want to delete cart item?')) {
+    return;
   }
 
-  sendData(obj, 'save');
+  sendData({ id: id }, 'delete');
+  
+}
 
-});
+
 
 
 
