@@ -151,12 +151,12 @@
                            <input class="form-input phone-container" id="phone" type="tel" name="phone"/>
                         </div>
                         <div class="my-2 d-flex signin-input">
-                           <div>
+                        <div>
                            <label class="label">Password</label>
                            <input value="<?=old_value('password')?>"  class="form-input" type="password" placeholder="Password" name="password" required>
                            </div>
                            <div>
-                           <label class="label">Confirm Pasword</label>
+                           <label class="label"></label>
                            <input value="<?=old_value('confirmpassword')?>"  class="form-input" type="password" placeholder="Confirm Password" name="confirmpassword" required>
                            </div>
                         </div>
