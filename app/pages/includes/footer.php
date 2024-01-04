@@ -31,10 +31,10 @@
         </div>
         <div class="column-2">
             <h3 class="font-oswold">Useful Links</h3>
-            <a class="footer-links navlink" href="<?=ROOT?>/browse">Browse</a>
-            <a class="footer-links navlink" href="<?=ROOT?>/blog">Blogs</a>
-            <a class="footer-links navlink" href="<?=ROOT?>/login">Login</a>
-            <a class="footer-links navlink" href="<?=ROOT?>/signup">Registration</a>
+            <a class="footer-links navlink pt-2" href="<?=ROOT?>/browse">Browse</a>
+            <a class="footer-links navlink pt-2" href="<?=ROOT?>/blog">Blogs</a>
+            <a class="footer-links navlink pt-2" href="<?=ROOT?>/login">Login</a>
+            <a class="footer-links navlink pt-2" href="<?=ROOT?>/signup">Registration</a>
         </div>
         <div class="column-3 my-3">
             <h3 class="font-oswold">Become a Seller</h3>
