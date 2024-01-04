@@ -7,7 +7,7 @@
             </a>
             <div>
                 <p class="width">
-                Let's make something great together. We are trusted by over 5000+ clients. Join them by using our services and grow your business.Join them by using our services and grow your business.
+                    Shop with confidence knowing your favorite digital products are just a click away. Lightning-fast delivery straight to your inbox – because convenience is our commitment.
                 </p>
             </div>
             <div class="socials my-3 pointer">

@@ -1,18 +1,22 @@
 <div class="accordion">
 			<details>
-			  <summary>What are some random questions to ask?</summary>
-			  <p>That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question to ask friends, family and people you want to get to know better.</p>
+			  <summary>How do I buy an Account?</summary>
+			  <p>Click on any digital product you want. Click purchase product and proceed to payment and pay via Mpesa. The account logins will be sent to your email immediately 
+				after payment.
+			  </p>
 			</details>
 			<details>
-			  <summary>Do you include common questions?</summary>
-			  <p>This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator are questions that elicit a bit more information that a typical common question.</p>
+			  <summary>What Payment Method will I use?</summary>
+			  <p>The site currently supports Mpesa only. Pay via Lipa na Mpesa</p>
 			</details>
 			<details>
-			  <summary>Can I use this for 21 questions?</summary>
-			  <p>Yes! there are two ways that you can use this question generator depending on what you're after. You can indicate that you want 21 questions generated and you'll instantly have a random list of 21 questions to use. If you want to curate the 21 questions to use, you can spend some time on the generator until you find 21 questions you like, then use those the next time you play the 21 questions game.</p>
+			  <summary>Can two people buy the same account?</summary>
+			  <p>No! Each and every product has a unique product identifier(ID). After receiving the account logins in your email, the account details get terminated from the site immediately.
+				Therefore, one account cannot be bought twice.
+			  </p>
 			</details>
 			<details>
-			  <summary>Are these questions for girls or for boys?</summary>
-			  <p>The questions in this generator are gender neutral and can be used to ask either male of females (or any other gender the person identifies with). These questions were created to elicit interesting and thoughtful answers and aren't specific to a specific type of person.</p>
+			  <summary>Do you also purchase accounts?</summary>
+			  <p>Yes. If you have an account that you would like to sell to us, click on the "Sell account" button at the bottom of your screen and fill in the form.</p>
 			</details>
 		</div>
