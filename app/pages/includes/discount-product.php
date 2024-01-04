@@ -10,7 +10,16 @@
                 <div class="product-badge position-absolute px-2 py-2">
                     <button class="btn-discount text-white">
                         <?php
-                        echo (($row['original_price'] - $row['selling_price']) / $row['original_price']) * 100;
+                              $original_price = $row['original_price'];
+                              $selling_price = $row['selling_price'];
+                          
+                              if ($original_price != 0) {
+                                  $percentage_discount = ($original_price - $selling_price) / $original_price * 100;
+                                  $formatted_percentage = number_format($percentage_discount, 0, '.', '');
+                                  echo intval($formatted_percentage);
+                              } else {
+                                  echo "Error: Original price is zero.";
+                              }
                         ?>%
                     </button>
                 </div>
