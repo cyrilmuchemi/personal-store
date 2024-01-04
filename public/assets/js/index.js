@@ -305,6 +305,8 @@ function handleResult(result) {
 }
 
 }
+
+
 function handleItem(item)
 {
   if (item.data_type === 'delete') {
@@ -312,10 +314,12 @@ function handleItem(item)
         alert('Error: ' + item.error);
     } else {
         // Redirect only after successful delete
+        window.location.href = '/personal-store/public/home';
         sendData({}, 'read');
     }
-}else  if(item.data_type == 'read')
+}else  if(item.data_type === 'read')
 {
+
   const cartBody = document.querySelector('.cart-card');
   let str = "";
 
@@ -363,10 +367,10 @@ function handleItem(item)
                     <span>Ksh ${row.price}</span>
                 </div>
                 <div class="my-3">
-                  <button class="btn btn-primary btn-lg cart-btn font-oswold">GO TO CHECKOUT</button>
+                  <button class="btn btn-primary btn-lg cart-btn font-oswold" onclick="proceed2Checkout()">GO TO CHECKOUT</button>
                 </div>
                 <div class="my-3">
-                  <button class="btn btn-danger btn-lg cart-btn font-oswold">GO BACK HOME</button>
+                  <button class="btn btn-danger btn-lg cart-btn font-oswold" onclick="goHome()">GO BACK HOME</button>
                 </div>
               </div>
             </div>
@@ -374,12 +378,10 @@ function handleItem(item)
       </div>
       `;
     }
-  }else{
-    str = "No records found!";
   }
     cartBody.innerHTML = str;
     
-  }else if(item.data_type == 'save'){
+  }else if(item.data_type === 'save'){
     if(item.error){
       alert("Error:" + item.error);
     }else{
@@ -413,6 +415,15 @@ function deleteFromCart(id) {
   
 }
 
+function goHome(){
+  window.location.href = '/personal-store/public/home';
+  return;
+}
+
+function proceed2Checkout(){
+  window.location.href = '/personal-store/public/checkout';
+  return;
+}
 
 
 

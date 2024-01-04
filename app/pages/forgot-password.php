@@ -31,7 +31,7 @@
               $update_token = "UPDATE users SET verify_token = :token WHERE email = :email";
 
               try {
-                $success = query($update_token, [':token' => $token, ':email' => $_POST['email']], true);
+                $success = query($update_token, ['token' => $token, 'email' => $_POST['email']], true);
                 if ($success) {
 
                   send_password_reset($get_name, $get_email, $token);
