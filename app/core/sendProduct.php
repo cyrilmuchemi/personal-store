@@ -13,9 +13,10 @@ if(!empty($_POST))
 
     $query_user = "SELECT * FROM users WHERE user_id = :user_id LIMIT 1";
     $user_row = query_row($query_user, ['user_id'=>$data['user_id']]);
-    
+
     if(!empty($product_row) && !empty($user_row))
     {
+        $id                         = $product_row['id'];
         $data['username']           = $user_row['username'];
         $data['account_name']       = $product_row['name'];
         $data['user_email']         = $user_row['email'];
@@ -24,9 +25,11 @@ if(!empty($_POST))
         $data['account_location']   = $product_row['account_location'];
 
         send_account_mail($data['username'], $data['user_email'], $data['account_name'], $data['account_email'], $data['account_password'], $data['account_location']);
-        redirect('home');
+        deleteProduct($id);
         $_SESSION['account_sold'] = "Thank you for your Purchase! Account details are sent to your email";
+        redirect('completepurchase');
     }else{
         $_SESSION['account_sold'] = "Purchase failed";
+        redirect('completepurchase');
     }
 }

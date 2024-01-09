@@ -537,6 +537,19 @@ function getMIMEType($filename) {
     }
 }
 
+function deleteProduct($id)
+{
+    $query= 'delete from products where id = :id limit 1';
+    $row = query_row($query, ['id'=>$id]);
+
+    if($row)
+    {
+        $update_query = "UPDATE products SET account_name = :name, account_email = :owner_email WHERE id = :id";
+        $update_product = query_row($update_query, ['id'=>$id]);
+        
+    }
+}
+
 
 function resize_image($filename, $max_size = 1000)
 {
