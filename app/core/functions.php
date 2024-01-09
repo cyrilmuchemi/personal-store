@@ -43,6 +43,49 @@ function sendemail_verify($name, $email, $verify_token)
 
 }
 
+function  send_account_mail($username, $user_email, $account_name, $account_email, $account_password, $account_location)
+{
+    $mail = new PHPMailer(true);
+
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                     
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'ccntszone@gmail.com';                     //SMTP username
+    $mail->Password   = 'dcuy lksd canu vvrm';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('ccntszone@gmail.com', $username);
+    $mail->addAddress($user_email);     //Add a recipient
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Purchased Account';
+    $mail->Body    = "
+    <h2>Purchased Account From AccountsZone</h2>
+    <h5>Here are the login details for your account!</h5>
+    <p>Account name: '$account_name'</p>
+    <p>Account email: '$account_email'</p>
+    <p>Account password: '$account_password'</p>
+    <p>Account location: '$account_location'</p>
+    ";
+
+    $mail->AltBody = "
+    <h2>Purchased Account From AccountsZone</h2>
+    <h5>Here are the login details for your account!</h5>
+    <p>Account name: '$account_name'</p>
+    <p>Account email: '$account_email'</p>
+    <p>Account password: '$account_password'</p>
+    <p>Account location: '$account_location'</p>
+    ";
+    
+
+    $mail->send($user_email);
+
+}
+
 function query(string $query, array $data = [], bool $isUpdate = false)
 {
     try {
@@ -91,23 +134,22 @@ function query(string $query, array $data = [], bool $isUpdate = false)
 
 function query_row(string $query, array $data = [])
 {
-    $string = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+    $dsn = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
+
     try {
-        $con = new PDO($string, DBUSER, DBPASS);
+        $con = new PDO($dsn, DBUSER, DBPASS, $options);
         
         $stm = $con->prepare($query);
         $stm->execute($data);
 
-        $result = $stm->fetch(PDO::FETCH_ASSOC);
+        return $stm->fetch(); // PDO::FETCH_ASSOC is the default, so no need to specify
 
-        if (is_array($result) && !empty($result)) {
-            return $result;
-        } else {
-            return false; 
-        }
     } catch (PDOException $e) {
-        echo "Database Error: " . $e->getMessage();
-        echo "SQL Error: " . $e->getMessage();
+        error_log("Database Error: " . $e->getMessage());
         return false;
     }
 }

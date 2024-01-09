@@ -49,6 +49,8 @@ header('Content-Type: application/json');
                     $data['price'] = $product_row['selling_price'];
                     $data['image'] = $product_row['image'];
                     $data['cart_item'] = $product_row['name'];
+                    $_SESSION['cart_product'] = $product_row['name'];
+                    $_SESSION['cart_product_id'] = $data['product_id'];
                 }
         
               // Use a conditional INSERT to handle existing records

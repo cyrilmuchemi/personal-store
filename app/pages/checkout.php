@@ -1,3 +1,15 @@
+<?php
+  include '../app/pages/includes/access.php';
+  access('CUSTOMER');
+
+  $data['cart_product'] = $_SESSION['cart_product'];
+ 
+  $query_product = "SELECT * FROM products WHERE name = :cart_product";
+  $product_row = query_row($query_product, $data);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,31 +90,32 @@
         </div>
         <div class="media mt-4 d-flex justify-content-center pl-2">
           <img src="<?=ROOT?>/assets/vectors/Mpepe.png" class="mr-3" height="75" />
-            <h6>Enter Amount & Number</h6>
+            <h6>Enter Phone Number</h6>
         </div>
         <div class="media mt-3 pl-2">
-                          <!--bs5 input-->
-
-            <form class="row g-3" action="./stk_initiate.php" method="POST">
-            
+            <!--bs5 input-->
+            <?php if(!empty($product_row)): ?>
+            <form class="row g-3" action="/personal-store/app/core/sendProduct.php" method="POST">
                 <div class="col-12">
                   <label for="inputAddress" class="form-label">Amount</label>
-                  <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
+                  <input type="text" class="form-control" name="amount" value="<?=$product_row['selling_price']?>" disabled>
                 </div>
                 <div class="col-12">
                   <label for="inputAddress2" class="form-label" >Phone Number</label>
-                  <input type="text" class="form-control" name="phone"  placeholder="Enter Phone Number">
+                  <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number">
                 </div>
              
                 <div class="col-12">
-                  <button type="submit" class="btn btn-success" name="submit" value="submit">Donate</button>
+                  <button type="submit" id="mpepe" class="btn btn-success" name="submit" value="submit">Buy Account</button>
                 </div>
               </form>
+              <?php endif ;?>
               <!--bs5 input-->
           </div>
         </div>
       </div>
     </div>
+    
     <script
       type="text/javascript"
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
