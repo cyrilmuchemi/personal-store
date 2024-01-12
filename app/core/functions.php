@@ -506,6 +506,20 @@ function send_password_reset($get_name, $get_email, $token)
     $mail->send($get_email);
 }
 
+function deleteProduct($id)
+{
+    $query= 'delete from products where id = :id limit 1';
+    $row = query_row($query, ['id'=>$id]);
+
+    if($row)
+    {
+        $update_query = "UPDATE products SET account_name = :name, account_email = :owner_email WHERE id = :id";
+        $update_product = query_row($update_query, ['id'=>$id]);
+        
+    }
+}
+
+
 function getMIMETypeByExtension($filename) {
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -536,20 +550,6 @@ function getMIMEType($filename) {
         return getMIMETypeByExtension($filename);
     }
 }
-
-function deleteProduct($id)
-{
-    $query= 'delete from products where id = :id limit 1';
-    $row = query_row($query, ['id'=>$id]);
-
-    if($row)
-    {
-        $update_query = "UPDATE products SET account_name = :name, account_email = :owner_email WHERE id = :id";
-        $update_product = query_row($update_query, ['id'=>$id]);
-        
-    }
-}
-
 
 function resize_image($filename, $max_size = 1000)
 {
